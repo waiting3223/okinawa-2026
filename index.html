@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沖繩 5天4夜行程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean: #006B8F;
+    --ocean-light: #0090BF;
+    --sky: #E8F6FF;
+    --sand: #FFF8EE;
+    --coral: #FF6B6B;
+    --coral-dark: #E05555;
+    --mint: #2EC4B6;
+    --gold: #F7B731;
+    --dark: #1A2B3C;
+    --mid: #4A6278;
+    --light: #8FA8BC;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--dark);
+    color: var(--dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #003D5C 0%, #006B8F 50%, #0090BF 100%);
+    padding: 48px 20px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 60px;
+    background: var(--dark);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .hero-wave {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(255,255,255,0.5) 28px,
+      rgba(255,255,255,0.5) 30px
+    );
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 4px;
+    color: var(--white);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 8px;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-flights {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .flight-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--white);
+    backdrop-filter: blur(8px);
+    width: fit-content;
+  }
+  .flight-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    background: #F2F6FA;
+    padding: 24px 16px 40px;
+  }
+
+  /* ── DAY CARD ── */
+  .day-card {
+    background: var(--white);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,59,92,0.10);
+    animation: fadeUp 0.5s ease both;
+  }
+  .day-card:nth-child(1) { animation-delay: 0.05s; }
+  .day-card:nth-child(2) { animation-delay: 0.10s; }
+  .day-card:nth-child(3) { animation-delay: 0.15s; }
+  .day-card:nth-child(4) { animation-delay: 0.20s; }
+  .day-card:nth-child(5) { animation-delay: 0.25s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .day-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid #EEF3F8;
+  }
+  .day-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    line-height: 1;
+    color: var(--ocean);
+    min-width: 60px;
+  }
+  .day-info {}
+  .day-date { font-size: 11px; color: var(--light); letter-spacing: 1px; text-transform: uppercase; }
+  .day-theme { font-size: 14px; font-weight: 700; color: var(--dark); margin-top: 2px; }
+
+  /* color themes per day */
+  .day-1 .day-num { color: #006B8F; }
+  .day-2 .day-num { color: #2EC4B6; }
+  .day-3 .day-num { color: #F7B731; }
+  .day-4 .day-num { color: #006B8F; }
+  .day-5 .day-num { color: #FF6B6B; }
+
+  /* ── TIMELINE ── */
+  .timeline { padding: 8px 20px 4px 20px; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 52px 1px 1fr;
+    gap: 0 12px;
+    padding: 10px 0;
+    position: relative;
+  }
+  .tl-time {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--mid);
+    padding-top: 2px;
+    text-align: right;
+    line-height: 1.3;
+  }
+  .tl-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .tl-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ocean);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--ocean);
+    flex-shrink: 0;
+    margin-top: 3px;
+    z-index: 1;
+  }
+  .day-3 .tl-dot { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+  .day-5 .tl-dot { background: var(--coral); box-shadow: 0 0 0 2px var(--coral); }
+  .tl-connector {
+    flex: 1;
+    width: 2px;
+    background: #E2EAF2;
+    margin-top: 4px;
+  }
+  .tl-item:last-child .tl-connector { display: none; }
+  .tl-body { padding-bottom: 4px; }
+  .tl-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+  .tl-note {
+    font-size: 12px;
+    color: var(--mid);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 100px;
+    margin-top: 5px;
+    letter-spacing: 0.5px;
+  }
+  .tag-warn { background: #FFF3CD; color: #996600; }
+  .tag-book { background: #FFE5E5; color: #CC3333; }
+  .tag-tip  { background: #E0F7F5; color: #1A8C84; }
+
+  /* ── RAIN BACKUP ── */
+  .rain-box {
+    margin: 4px 20px 16px;
+    background: linear-gradient(135deg, #E8F4FF, #F0FAFF);
+    border-left: 3px solid var(--ocean-light);
+    border-radius: 0 12px 12px 0;
+    padding: 10px 14px;
+  }
+  .rain-title { font-size: 11px; font-weight: 700; color: var(--ocean); letter-spacing: 1px; margin-bottom: 4px; }
+  .rain-text { font-size: 12px; color: var(--mid); line-height: 1.6; }
+
+  /* ── SECTION: BOOKING ── */
+  .section-title {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--light);
+    text-transform: uppercase;
+    margin: 28px 0 12px;
+  }
+  .booking-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .booking-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid #F0F4F8;
+  }
+  .booking-item:last-child { border-bottom: none; }
+  .booking-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--coral);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .booking-dot.warn { background: var(--gold); }
+  .booking-name { font-size: 13px; font-weight: 700; color: var(--dark); }
+  .booking-detail { font-size: 12px; color: var(--mid); margin-top: 3px; line-height: 1.5; }
+
+  /* ── SECTION: NOTES ── */
+  .notes-card {
+    background: var(--dark);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .note-item {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 13px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.6;
+  }
+  .note-item:last-child { border-bottom: none; }
+  .note-icon { flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    background: var(--dark);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-wave"></div>
+  <div class="hero-title">OKINAWA<br>2026</div>
+  <div class="hero-sub">5天4夜・4人自駕・5/12－5/16</div>
+  <div class="hero-flights">
+    <div class="flight-pill"><span class="dot"></span> IT288 KHH 10:10 → OKA 13:00</div>
+    <div class="flight-pill"><span class="dot"></span> IT289 OKA 14:00 → KHH 14:55</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- DAY 1 -->
+  <div class="day-card day-1">
+    <div class="day-header">
+      <div class="day-num">01</div>
+      <div class="day-info">
+        <div class="day-date">5/12（二）</div>
+        <div class="day-theme">✈️ 抵達・瀨長島・Churasun 6</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">抵達 OKA 入境提行李</div>
+          <div class="tl-note">步行至國內線 10-A 站牌搭 OTS 接駁巴士</div>
+          <span class="tag tag-warn">⚠️ 國際線施工中，需步行至國內線</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🌅 瀨長島 Umikaji Terrace</div>
+          <div class="tl-note">夕陽＋海景拍照，機場旁 5 分鐘</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">飯店 Check-in</div>
+          <div class="tl-note">Hotel Cocktail Stay Naha</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🍽️ 國際通附近晚餐</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🎭 Churasun 6 表演</div>
+          <div class="tl-note">飯店步行 5 分鐘</div>
+          <span class="tag tag-book">🔴 需提前訂票 ¥5,500</span>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">瀨長島改逛國際通＋藥妝店</div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card day-2">
+    <div class="day-header">
+      <div class="day-num">02</div>
+      <div class="day-info">
+        <div class="day-date">5/13（三）</div>
+        <div class="day-theme">🏛️ 南部文化日</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🌿 Gangala 之谷</div>
+          <div class="tl-note">導覽約 80 分鐘</div>
+          <span class="tag tag-book">🔴 需事先在 gangala.com 預約！</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🦇 沖繩世界（玉泉洞）</div>
+          <div class="tl-note">步行即到</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🐱 奧武島（貓島）</div>
+          <div class="tl-note">吃天婦羅</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🎨 南城美術館</div>
+          <span class="tag tag-warn">⚠️ 出發前確認 5 月是否開放</span>
+          <div class="tl-note" style="margin-top:6px">📌 備案：知念岬公園（免費・270度海景）</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🍣 牧志公設市場 晚餐</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">南城美術館→沖繩縣立博物館・美術館 OkiMyu（那霸市內，室內，09:00-18:00）</div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card day-3">
+    <div class="day-header">
+      <div class="day-num">03</div>
+      <div class="day-info">
+        <div class="day-date">5/14（四）</div>
+        <div class="day-theme">🏎️ 中部・卡丁車・PARCO CITY・美國村・AEON</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🏎️ 街頭卡丁車</div>
+          <div class="tl-note">約 1 小時・身高限制 145~185cm</div>
+          <span class="tag tag-book">🔴 需提前預約 約¥8,000/人</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">☕ 港川外人住宅</div>
+          <div class="tl-note">美式咖啡館早午餐</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🏬 PARCO CITY（浦添）</div>
+          <div class="tl-note">250間品牌！POLO RALPH LAUREN・SABON・UNIQLO・MUJI 等</div>
+          <span class="tag tag-tip">✨ Porter「POTR 概念店」在此！款式最齊</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🛍️ 美國村</div>
+          <div class="tl-note">Blue Seal 冰淇淋＋逛街</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🏖️ Tropical Beach</div>
+          <div class="tl-note">美國村旁 5 分鐘</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🛒 AEON Mall Rycom</div>
+          <div class="tl-note">寶可夢中心・吉卜力・藥妝採購</div>
+          <span class="tag tag-tip">退稅 5,000¥ 以上</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">返回那霸</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">Tropical Beach 跳過，PARCO CITY＋AEON 各多逛一圈（室內）</div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card day-4">
+    <div class="day-header">
+      <div class="day-num">04</div>
+      <div class="day-info">
+        <div class="day-date">5/15（五）</div>
+        <div class="day-theme">🌊 北部大日遊</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">出發北上</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🪨 萬座毛（象鼻岩）</div>
+          <div class="tl-note">100¥ 入場，約 30 分鐘</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🤿 青之洞窟浮潛</div>
+          <div class="tl-note">恩納村，約 1.5~2 小時</div>
+          <span class="tag tag-book">🔴 需提前預約</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🌉 古宇利島</div>
+          <div class="tl-note">心形岩打卡，約 1 小時</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🐠 美麗海水族館 ⭐</div>
+          <div class="tl-note">海豚秀 15:00 場，提前 10 分鐘佔位！</div>
+          <div class="tl-note">海豚秀：10:30 / 11:30 / 13:00 / 15:00 / 17:00</div>
+          <div class="tl-note">鯨鯊餵食：15:00 / 17:00</div>
+          <span class="tag tag-book">🔴 需提前購票</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">返回那霸</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">① 浮潛確認業者政策（部分照常）<br>② 萬座毛縮短→美麗海多逛（室內）</div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card day-5">
+    <div class="day-header">
+      <div class="day-num">05</div>
+      <div class="day-info">
+        <div class="day-date">5/16（六）</div>
+        <div class="day-theme">🛍️ 購物・返國</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">07:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🐟 泊港漁市場 早餐</div>
+          <div class="tl-note">7 點開，鮪魚蓋飯（現殺海鮮）</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🏷️ ASHIBINAA Outlet</div>
+          <div class="tl-note">GUCCI・Coach・MK 等精品</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">還車 OTS 豐崎</div>
+          <div class="tl-note">ASHIBINAA 步行即到</div>
+          <span class="tag tag-book">⚠️ 11:30 前務必完成！</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">抵達機場</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">✈️ OKA 起飛（IT289）</div>
+          <div class="tl-note">14:55 抵達 KHH 🎉</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">泊港漁市場室內無問題，ASHIBINAA 半開放式，帶摺疊傘</div>
+    </div>
+  </div>
+
+  <!-- BOOKING -->
+  <div class="section-title">📋 出發前必辦預訂</div>
+  <div class="booking-card">
+    <div class="booking-item">
+      <div class="booking-dot"></div>
+      <div>
+        <div class="booking-name">Gangala 之谷</div>
+        <div class="booking-detail">gangala.com 預約・名額有限，越早越好！</div>
+      </div>
+    </div>
+    <div class="booking-item">
+      <div class="booking-dot"></div>
+      <div>
+        <div class="booking-name">Churasun 6 表演</div>
+        <div class="booking-detail">KKday / Klook・普通席 ¥5,500・遲到 15 分不退款</div>
+      </div>
+    </div>
+    <div class="booking-item">
+      <div class="booking-dot"></div>
+      <div>
+        <div class="booking-name">美麗海水族館</div>
+        <div class="booking-detail">KKday / Klook 提前購票，配合海豚秀時間安排</div>
+      </div>
+    </div>
+    <div class="booking-item">
+      <div class="booking-dot"></div>
+      <div>
+        <div class="booking-name">街頭卡丁車</div>
+        <div class="booking-detail">KKday / Klook・約 ¥8,000/人・4 人各自預約同方案，帶駕照+譯本</div>
+      </div>
+    </div>
+    <div class="booking-item">
+      <div class="booking-dot"></div>
+      <div>
+        <div class="booking-name">青之洞窟浮潛</div>
+        <div class="booking-detail">KKday / Klook・可選含接送方案</div>
+      </div>
+    </div>
+    <div class="booking-item">
+      <div class="booking-dot warn"></div>
+      <div>
+        <div class="booking-name">南城美術館</div>
+        <div class="booking-detail">⚠️ 出發前確認 5 月是否開放（換檔期中）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="section-title">📌 重要提醒</div>
+  <div class="notes-card">
+    <div class="note-item"><span class="note-icon">🚌</span><span>OTS 接駁：國際線施工中，需步行至國內線 10-A 站牌，每 20 分鐘一班</span></div>
+    <div class="note-item"><span class="note-icon">🏎️</span><span>卡丁車：身高限制 145~185cm，各自預約需告知同行</span></div>
+    <div class="note-item"><span class="note-icon">⏰</span><span>Day 5 時間緊：11:30 前務必完成還車</span></div>
+    <div class="note-item"><span class="note-icon">🎒</span><span>Porter：PARCO CITY「POTR 概念店」款式最齊全，退稅 5,000¥ 以上</span></div>
+    <div class="note-item"><span class="note-icon">🐬</span><span>海豚秀免費，戶外表演，夏天記得帶帽子防曬，提早 10 分鐘佔位</span></div>
+  </div>
+
+</div>
+
+<div class="footer">沖繩 2026・5天4夜・4人自駕</div>
+
+</body>
+</html>
