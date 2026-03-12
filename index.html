@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>沖繩 5天4夜行程</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
@@ -79,25 +79,71 @@
   .hero-flights {
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 8px;
     position: relative;
     z-index: 1;
   }
-  .flight-pill {
-    display: inline-flex;
+  .flight-card {
+    flex: 1;
+    min-width: 0;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 14px;
+    padding: 9px 10px 7px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .flight-card-header {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.60);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .flight-card-header .fc-name {
+    color: rgba(255,255,255,0.90);
+    font-weight: 900;
+  }
+  .flight-row {
+    display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 100px;
-    padding: 6px 14px;
-    font-size: 12px;
-    color: var(--white);
-    backdrop-filter: blur(8px);
-    width: fit-content;
+    padding: 5px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
   }
-  .flight-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .flight-dir {
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 24px;
+    flex-shrink: 0;
+  }
+  .flight-dir.ret { color: var(--mint); }
+  .flight-code {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--white);
+    min-width: 36px;
+    flex-shrink: 0;
+    letter-spacing: 1px;
+  }
+  .flight-route {
+    font-size: 11px;
+    color: rgba(255,255,255,0.88);
+    flex: 1;
+    line-height: 1.4;
+  }
+  .flight-tba {
+    font-size: 12px;
+    color: rgba(255,255,255,0.30);
+    font-style: italic;
+  }
 
   /* ── MAIN CONTENT ── */
   .content {
@@ -133,39 +179,57 @@
     border-bottom: 1px solid #EEF3F8;
   }
   .day-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+    flex-shrink: 0;
+  }
+  .day-num-text {
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--light);
     line-height: 1;
+    margin-bottom: 1px;
+  }
+  .day-num-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    line-height: 0.9;
     color: var(--ocean);
-    min-width: 60px;
   }
   .day-info {}
   .day-date { font-size: 11px; color: var(--light); letter-spacing: 1px; text-transform: uppercase; }
   .day-theme { font-size: 14px; font-weight: 700; color: var(--dark); margin-top: 2px; }
 
   /* color themes per day */
-  .day-1 .day-num { color: #006B8F; }
-  .day-2 .day-num { color: #2EC4B6; }
-  .day-3 .day-num { color: #F7B731; }
-  .day-4 .day-num { color: #006B8F; }
-  .day-5 .day-num { color: #FF6B6B; }
+  .day-1 .day-num-n { color: #006B8F; }
+  .day-2 .day-num-n { color: #2EC4B6; }
+  .day-3 .day-num-n { color: #F7B731; }
+  .day-4 .day-num-n { color: #006B8F; }
+  .day-5 .day-num-n { color: #FF6B6B; }
 
   /* ── TIMELINE ── */
   .timeline { padding: 8px 20px 4px 20px; }
   .tl-item {
     display: grid;
-    grid-template-columns: 52px 1px 1fr;
+    grid-template-columns: 60px 1px 1fr;
     gap: 0 12px;
     padding: 10px 0;
     position: relative;
   }
   .tl-time {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     color: var(--mid);
     padding-top: 2px;
     text-align: right;
-    line-height: 1.3;
+    line-height: 1.4;
+    word-break: break-word;
+    hyphens: none;
   }
   .tl-line {
     display: flex;
@@ -230,14 +294,18 @@
   .rain-title { font-size: 11px; font-weight: 700; color: var(--ocean); letter-spacing: 1px; margin-bottom: 4px; }
   .rain-text { font-size: 12px; color: var(--mid); line-height: 1.6; }
 
-  /* ── SECTION: BOOKING ── */
+  /* ── SECTION TITLES ── */
   .section-title {
-    font-size: 11px;
+    font-size: 16px;
     font-weight: 900;
-    letter-spacing: 2px;
-    color: var(--light);
-    text-transform: uppercase;
-    margin: 28px 0 12px;
+    letter-spacing: 0.5px;
+    color: var(--dark);
+    margin: 32px 0 10px;
+    padding: 0 0 0 13px;
+    border-left: 4px solid var(--ocean-light);
+    display: flex;
+    align-items: center;
+    line-height: 1.35;
   }
   .booking-card {
     background: var(--white);
@@ -283,13 +351,568 @@
   .note-item:last-child { border-bottom: none; }
   .note-icon { flex-shrink: 0; font-size: 14px; margin-top: 1px; }
 
+  /* ── CANDIDATE SPOTS ── */
+  .cand-wrap {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .cand-section {
+    padding: 14px 18px;
+    border-bottom: 1px solid #EEF3F8;
+  }
+  .cand-section:last-child { border-bottom: none; }
+  .cand-cat-label {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cand-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .cand-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #F0F6FA;
+    border: 1px solid #DDE8F0;
+    border-radius: 100px;
+    padding: 4px 10px 4px 8px;
+    font-size: 12px;
+    color: var(--dark);
+    font-weight: 500;
+  }
+  .cand-chip-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    color: var(--ocean-light);
+    line-height: 1;
+  }
+
+  /* ── REGION LABEL inside chip groups ── */
+  .cand-region {
+    flex: 0 0 100%;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 6px 0 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cand-region:first-child { padding-top: 0; }
+  .cand-region::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #DDE8F0;
+  }
+
+  /* ── PREP CARD ── */
+  .prep-card {
+    background: var(--dark);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .prep-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .prep-item:last-child { border-bottom: none; }
+  .prep-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--ocean-light);
+    line-height: 1;
+    min-width: 22px;
+    margin-top: 1px;
+  }
+  .prep-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .prep-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.65;
+  }
+  .prep-link {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 11px;
+    color: var(--mint);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(46,196,182,0.35);
+    word-break: break-all;
+  }
+
+  /* ── TODO CARD ── */
+  .todo-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .todo-person {
+    padding: 12px 18px;
+    border-bottom: 1px solid #EEF3F8;
+  }
+  .todo-person:last-child { border-bottom: none; }
+  .todo-person-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 11px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .todo-person-tag.blue  { background: #E0EEFF; color: #1A5FC8; }
+  .todo-person-tag.teal  { background: #E0F7F5; color: #1A8C84; }
+  .todo-person-tag.coral { background: #FFE5E5; color: #CC3333; }
+  .todo-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.55;
+    padding: 2px 0;
+  }
+  .todo-task::before { content: '▸'; color: var(--ocean-light); flex-shrink: 0; }
+  .todo-task.hi { color: var(--dark); font-weight: 600; }
+
+  /* ── LINKS CARD ── */
+  .links-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .link-item {
+    padding: 12px 18px;
+    border-bottom: 1px solid #EEF3F8;
+  }
+  .link-item:last-child { border-bottom: none; }
+  .link-title { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+  .link-url {
+    display: block;
+    font-size: 11px;
+    color: var(--ocean-light);
+    text-decoration: none;
+    word-break: break-all;
+    margin-top: 2px;
+  }
+  .link-url:hover { text-decoration: underline; }
+  .link-note { font-size: 12px; color: var(--mid); line-height: 1.55; margin-top: 2px; }
+  .combo-opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .combo-opt {
+    font-size: 11px;
+    background: #F0F6FA;
+    border: 1px solid #DDE8F0;
+    border-radius: 100px;
+    padding: 2px 8px;
+    color: var(--mid);
+  }
+
   /* ── FOOTER ── */
   .footer {
     text-align: center;
     padding: 20px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
     font-size: 11px;
     color: rgba(255,255,255,0.25);
     background: var(--dark);
+  }
+
+  /* ── MOBILE IMPROVEMENTS ── */
+
+  /* Responsive hero title */
+  .hero-title {
+    font-size: clamp(34px, 13vw, 52px);
+  }
+
+  /* Safe area: hero padding for notch phones */
+  .hero {
+    padding-top: calc(48px + env(safe-area-inset-top, 0px));
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+
+  /* Sticky day navigation bar */
+  .day-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,43,60,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    -webkit-overflow-scrolling: touch;
+  }
+  .day-nav::-webkit-scrollbar { display: none; }
+  .day-nav-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 100px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.10);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .day-nav-btn.active {
+    background: var(--ocean-light);
+    color: var(--white);
+    border-color: transparent;
+  }
+  .day-nav-btn:active {
+    opacity: 0.75;
+  }
+
+  /* Touch-friendly link targets */
+  .link-url {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+  }
+  .prep-link {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 0;
+  }
+
+  /* Ensure day-theme wraps gracefully on small screens */
+  .day-theme {
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  /* Multi-time slot (e.g. 20:30 or 22:30) */
+  .tl-time-multi {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0px;
+  }
+  .tl-time-multi span { line-height: 1.45; }
+  .tl-or {
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--light);
+    line-height: 1.2;
+  }
+
+  /* ── TIMELINE ACTION BUTTONS ── */
+  .tl-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 7px;
+  }
+  .tl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 28px;
+    transition: opacity 0.15s;
+    letter-spacing: 0.3px;
+  }
+  .tl-btn:active { opacity: 0.65; }
+  .tl-btn-map  { background: #E6F2FF; color: #0055BB; border: 1px solid #B3D4F7; }
+  .tl-btn-web  { background: #F0F6FA; color: #4A6278; border: 1px solid #DDE8F0; }
+  .tl-btn-book { background: #FFE5E5; color: #CC3333; border: 1px solid #FFBBBB; }
+
+  /* ── MERGED PREP CARD (white) ── */
+  .merge-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .merge-sub {
+    padding: 10px 18px 6px;
+    background: #F7FAFD;
+    border-bottom: 1px solid #EEF3F8;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .merge-sub:not(:first-child) { border-top: 2px solid #EEF3F8; }
+  .merge-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 18px;
+    border-bottom: 1px solid #F0F4F8;
+  }
+  .merge-row:last-child { border-bottom: none; }
+  .merge-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .merge-dot.warn { background: var(--gold); }
+  .merge-dot.blue { background: var(--ocean-light); }
+  .merge-dot.mint { background: var(--mint); }
+  .merge-name { font-size: 13px; font-weight: 700; color: var(--dark); }
+  .merge-detail { font-size: 12px; color: var(--mid); margin-top: 2px; line-height: 1.5; }
+  .merge-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--ocean-light);
+    line-height: 1;
+    min-width: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── PACKING LIST ── */
+  .pack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .pack-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--mid);
+    padding: 5px 18px;
+    line-height: 1.45;
+    border-bottom: 1px solid #F5F8FB;
+  }
+  .pack-item:nth-last-child(-n+2) { border-bottom: none; }
+  .pack-item::before {
+    content: '☐';
+    flex-shrink: 0;
+    color: var(--ocean-light);
+    font-size: 13px;
+    margin-top: -1px;
+  }
+  .pack-item.hi { color: var(--dark); font-weight: 600; }
+  @media (max-width: 400px) {
+    .pack-grid { grid-template-columns: 1fr; }
+    .pack-item:last-child { border-bottom: none; }
+  }
+
+  /* ── CHIP AS LINK ── */
+  a.cand-chip {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  a.cand-chip:hover, a.cand-chip:active {
+    background: #D6EAF8;
+    border-color: #A8CCE8;
+  }
+
+  /* Small phone (≤ 360px) adjustments */
+  @media (max-width: 360px) {
+    .hero-title { font-size: 32px; }
+    .content { padding: 16px 12px 40px; }
+    .tl-item { grid-template-columns: 54px 1px 1fr; }
+    .tl-label { font-size: 13px; }
+    .day-theme { font-size: 13px; }
+    .booking-item { padding: 12px 14px; }
+    .rain-box { margin: 4px 14px 14px; }
+    .timeline { padding: 8px 14px 4px; }
+  }
+
+  /* ── COLLAPSE SYSTEM ── */
+  .collapse-body {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.32s cubic-bezier(0.4,0,0.2,1);
+  }
+  .collapse-toggle.is-closed + .collapse-body {
+    grid-template-rows: 0fr;
+  }
+  .collapse-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+  .collapse-toggle {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  /* Day header chevron */
+  .day-header.collapse-toggle::after {
+    content: '▾';
+    font-size: 18px;
+    color: var(--light);
+    margin-left: auto;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .day-header.collapse-toggle.is-closed::after {
+    transform: rotate(-90deg);
+  }
+  /* Section title chevron (display:flex already in base .section-title) */
+  .section-title.collapse-toggle::after {
+    content: '▾';
+    font-size: 14px;
+    color: var(--light);
+    margin-left: auto;
+    padding-left: 8px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .section-title.collapse-toggle.is-closed::after {
+    transform: rotate(-90deg);
+  }
+  /* Candidate region label chevron */
+  .cand-cat-label.collapse-toggle::after {
+    content: '▾';
+    font-size: 13px;
+    color: var(--light);
+    margin-left: auto;
+    padding-left: 4px;
+    transition: transform 0.3s;
+  }
+  .cand-cat-label.collapse-toggle.is-closed::after {
+    transform: rotate(-90deg);
+  }
+  /* Merge-sub chevron */
+  .merge-sub.collapse-toggle::after {
+    content: '▾';
+    font-size: 11px;
+    color: var(--light);
+    margin-left: auto;
+    padding-left: 4px;
+    transition: transform 0.3s;
+  }
+  .merge-sub.collapse-toggle.is-closed::after {
+    transform: rotate(-90deg);
+  }
+  /* Remove bottom border on last collapse-inner's last child */
+  .merge-sub.collapse-toggle:not(:first-child) { margin-top: 0; }
+
+  /* ── SCHEDULE WRAP (big container for all day cards) ── */
+  .schedule-wrap {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 28px rgba(0,59,92,0.12);
+    margin-bottom: 20px;
+  }
+  .schedule-header {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #003B5C 0%, #0078A8 100%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+  }
+  .schedule-header-icon { font-size: 16px; line-height: 1; }
+  .schedule-header-title {
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 1.5px;
+  }
+  .schedule-header-meta {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    margin-left: auto;
+    letter-spacing: 0.5px;
+  }
+  /* Day cards inside schedule-wrap: no individual shadows/rounded corners */
+  .schedule-wrap .day-card {
+    border-radius: 0;
+    margin-bottom: 0;
+    box-shadow: none;
+    border-bottom: 6px solid #F2F6FA;
+    animation: none;
+  }
+  .schedule-wrap .day-card:last-child {
+    border-bottom: none;
+  }
+
+  /* ── FLIGHT CARD ACTION BUTTONS ── */
+  .fc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 7px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .fc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 100px;
+    text-decoration: none;
+    min-height: 26px;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.90);
+    border: 1px solid rgba(255,255,255,0.22);
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    transition: background 0.15s;
+  }
+  .fc-btn:active { background: rgba(255,255,255,0.28); }
+  /* Button placed inline in the header row */
+  .fc-btn-inline {
+    margin-left: auto;
+    font-size: 9px;
+    padding: 3px 8px;
+    min-height: 22px;
   }
 </style>
 </head>
@@ -301,18 +924,62 @@
   <div class="hero-title">OKINAWA<br>2026</div>
   <div class="hero-sub">5天4夜・4人自駕・5/12－5/16</div>
   <div class="hero-flights">
-    <div class="flight-pill"><span class="dot"></span> IT288 KHH 10:10 → OKA 13:00</div>
-    <div class="flight-pill"><span class="dot"></span> IT289 OKA 14:00 → KHH 14:55</div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">✈️ <span class="fc-name">林威廷 &amp; 鍾政洵</span><a class="fc-btn fc-btn-inline" href="https://www.tigerairtw.com/" target="_blank">🐯 虎航</a></div>
+      <div class="flight-row">
+        <span class="flight-dir">去程</span>
+        <span class="flight-code">IT288</span>
+        <span class="flight-route">KHH 10:10 → OKA 13:00</span>
+      </div>
+      <div class="flight-row">
+        <span class="flight-dir ret">回程</span>
+        <span class="flight-code">IT289</span>
+        <span class="flight-route">OKA 14:00 → KHH 14:55</span>
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">✈️ <span class="fc-name">蓮 &amp; 沈陽</span></div>
+      <div class="flight-row">
+        <span class="flight-dir">去程</span>
+        <span class="flight-tba">待補</span>
+      </div>
+      <div class="flight-row">
+        <span class="flight-dir ret">回程</span>
+        <span class="flight-tba">待補</span>
+      </div>
+    </div>
+
   </div>
 </div>
+
+<!-- DAY NAV -->
+<nav class="day-nav" id="dayNav">
+  <a href="#day1" class="day-nav-btn" data-day="day1">D1 抵達</a>
+  <a href="#day2" class="day-nav-btn" data-day="day2">D2 南部</a>
+  <a href="#day3" class="day-nav-btn" data-day="day3">D3 中部</a>
+  <a href="#day4" class="day-nav-btn" data-day="day4">D4 北部</a>
+  <a href="#day5" class="day-nav-btn" data-day="day5">D5 返國</a>
+  <a href="#prep" class="day-nav-btn">準備</a>
+  <a href="#notes" class="day-nav-btn">提醒</a>
+</nav>
 
 <!-- CONTENT -->
 <div class="content">
 
+  <!-- SCHEDULE WRAP -->
+  <div class="schedule-wrap">
+    <div class="schedule-header">
+      <span class="schedule-header-icon">🗓️</span>
+      <span class="schedule-header-title">行程規劃</span>
+      <span class="schedule-header-meta">5/12–5/16 · 5天4夜</span>
+    </div>
+
   <!-- DAY 1 -->
-  <div class="day-card day-1">
-    <div class="day-header">
-      <div class="day-num">01</div>
+  <div class="day-card day-1" id="day1">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">1</span></div>
       <div class="day-info">
         <div class="day-date">5/12（二）</div>
         <div class="day-theme">✈️ 抵達・瀨長島・Churasun 6</div>
@@ -323,9 +990,14 @@
         <div class="tl-time">13:00</div>
         <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
         <div class="tl-body">
-          <div class="tl-label">抵達 OKA 入境提行李</div>
-          <div class="tl-note">步行至國內線 10-A 站牌搭 OTS 接駁巴士</div>
+          <div class="tl-label">抵達 OKA 入境提行李 → 取車</div>
+          <div class="tl-note">步行至國內線 10-A 站牌搭 OTS 接駁巴士，取車約 30–60 分鐘</div>
           <span class="tag tag-warn">⚠️ 國際線施工中，需步行至國內線</span>
+          <div class="tl-note" style="margin-top:6px">🚗 租車資訊：<span style="color:var(--coral);font-weight:700">待補</span>（車型／車牌／取車編號）</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-web" href="https://www.otsinternational.jp/otsrentacar/cn/okinawa/reserve/cart/" target="_blank">🔗 OTS 官網</a>
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=OTSレンタカー+那覇空港店" target="_blank">📍 OTS 取車處</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -334,14 +1006,27 @@
         <div class="tl-body">
           <div class="tl-label">🌅 瀨長島 Umikaji Terrace</div>
           <div class="tl-note">夕陽＋海景拍照，機場旁 5 分鐘</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=瀨長島ウミカジテラス+豊見城市" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://www.umikajiterrace.com/" target="_blank">🔗 網站</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-time">18:00</div>
         <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
         <div class="tl-body">
-          <div class="tl-label">飯店 Check-in</div>
-          <div class="tl-note">Hotel Cocktail Stay Naha</div>
+          <div class="tl-label">🏨 飯店 Check-in</div>
+          <div class="tl-note" style="font-weight:600;color:var(--dark);margin-top:4px">Hotel Cocktail Stay Naha（WBF 松山）</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=ホテルWBF松山+那覇市松山" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-book" href="https://www.booking.com/hotel/jp/hotel-wbf-matsuyama.zh-tw.html?aid=1475963&label=mkt123sc-c4f59704-e2c4-4f09-b5f3-29f3c81b240f&sid=cdd0930a6feb72713c04a7c4dfcafe49&checkin=2026-05-12&checkout=2026-05-16&group_adults=4&no_rooms=2&room1=A%2CA&room2=A%2CA" target="_blank">📅 Booking</a>
+          </div>
+          <div class="tl-note" style="font-weight:600;color:var(--dark);margin-top:8px">HOTEL STRATA NAHA</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=HOTEL+STRATA+NAHA+那覇市" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-book" href="https://www.booking.com/hotel/jp/strata-naha.zh-tw.html?aid=356980&sid=cdd0930a6feb72713c04a7c4dfcafe49&checkin=2026-05-12&checkout=2026-05-16&group_adults=4&no_rooms=2&room1=A%2CA&room2=A%2CA" target="_blank">📅 Booking</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -352,25 +1037,29 @@
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">20:30</div>
+        <div class="tl-time tl-time-multi"><span>20:30</span><span class="tl-or">or</span><span>22:30</span></div>
         <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
         <div class="tl-body">
           <div class="tl-label">🎭 Churasun 6 表演</div>
           <div class="tl-note">飯店步行 5 分鐘</div>
           <span class="tag tag-book">🔴 需提前訂票 ¥5,500</span>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=CHURASUN6+那覇市松山" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-book" href="https://www.footprintokinawa.com/zh-TW/tickets/87" target="_blank">🎟 預約</a>
+          </div>
         </div>
       </div>
     </div>
     <div class="rain-box">
       <div class="rain-title">☔ 雨天備案</div>
-      <div class="rain-text">瀨長島改逛國際通＋藥妝店</div>
+      <div class="rain-text">① 瀨長島改逛國際通＋藥妝店<br>② San-A Naha Main Place 購物（住宿附近）</div>
     </div>
   </div>
 
   <!-- DAY 2 -->
-  <div class="day-card day-2">
-    <div class="day-header">
-      <div class="day-num">02</div>
+  <div class="day-card day-2" id="day2">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">2</span></div>
       <div class="day-info">
         <div class="day-date">5/13（三）</div>
         <div class="day-theme">🏛️ 南部文化日</div>
@@ -384,6 +1073,11 @@
           <div class="tl-label">🌿 Gangala 之谷</div>
           <div class="tl-note">導覽約 80 分鐘</div>
           <span class="tag tag-book">🔴 需事先在 gangala.com 預約！</span>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=ガンガラーの谷+南城市" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://gangala.com/" target="_blank">🔗 網站</a>
+            <a class="tl-btn tl-btn-book" href="https://book.gangala.com/?lng=zh-TW" target="_blank">📅 預約</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -392,6 +1086,10 @@
         <div class="tl-body">
           <div class="tl-label">🦇 沖繩世界（玉泉洞）</div>
           <div class="tl-note">步行即到</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=おきなわワールド+南城市" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://www.gyokusendo.co.jp/okinawaworld/" target="_blank">🔗 網站</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -399,7 +1097,10 @@
         <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
         <div class="tl-body">
           <div class="tl-label">🐱 奧武島（貓島）</div>
-          <div class="tl-note">吃天婦羅</div>
+          <div class="tl-note">吃天婦羅・中本鮮魚天婦羅名店</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=奥武島+南城市" target="_blank">📍 導航</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -408,7 +1109,11 @@
         <div class="tl-body">
           <div class="tl-label">🎨 南城美術館</div>
           <span class="tag tag-warn">⚠️ 出發前確認 5 月是否開放</span>
-          <div class="tl-note" style="margin-top:6px">📌 備案：知念岬公園（免費・270度海景）</div>
+          <div class="tl-note" style="margin-top:6px">📌 備案：知念岬公園（免費・270度海景）、購物中心或Outlet</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=南城市地域物産館+南城市" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=知念岬公園+南城市" target="_blank">📍 知念岬</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -416,19 +1121,23 @@
         <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
         <div class="tl-body">
           <div class="tl-label">🍣 牧志公設市場 晚餐</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=第一牧志公設市場+那覇市" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://www.makishi-public-market.jp/" target="_blank">🔗 網站</a>
+          </div>
         </div>
       </div>
     </div>
     <div class="rain-box">
       <div class="rain-title">☔ 雨天備案</div>
-      <div class="rain-text">南城美術館→沖繩縣立博物館・美術館 OkiMyu（那霸市內，室內，09:00-18:00）</div>
+      <div class="rain-text">① Gangala 之谷☔雨天照常・玉泉洞室內鐘乳石洞，皆不受影響 ✅<br>② 南城美術館 → 改逛購物中心或 Outlet</div>
     </div>
   </div>
 
   <!-- DAY 3 -->
-  <div class="day-card day-3">
-    <div class="day-header">
-      <div class="day-num">03</div>
+  <div class="day-card day-3" id="day3">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">3</span></div>
       <div class="day-info">
         <div class="day-date">5/14（四）</div>
         <div class="day-theme">🏎️ 中部・卡丁車・PARCO CITY・美國村・AEON</div>
@@ -442,6 +1151,10 @@
           <div class="tl-label">🏎️ 街頭卡丁車</div>
           <div class="tl-note">約 1 小時・身高限制 145~185cm</div>
           <span class="tag tag-book">🔴 需提前預約 約¥8,000/人</span>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=沖縄ストリートカート+北谷町" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/2739-street-go-karting-okinawa/" target="_blank">📅 Klook 預約</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -450,6 +1163,9 @@
         <div class="tl-body">
           <div class="tl-label">☕ 港川外人住宅</div>
           <div class="tl-note">美式咖啡館早午餐</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=港川外人住宅街+浦添市" target="_blank">📍 導航</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -459,6 +1175,10 @@
           <div class="tl-label">🏬 PARCO CITY（浦添）</div>
           <div class="tl-note">250間品牌！POLO RALPH LAUREN・SABON・UNIQLO・MUJI 等</div>
           <span class="tag tag-tip">✨ Porter「POTR 概念店」在此！款式最齊</span>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=PARCO+CITY+浦添" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://parcocity.parco.jp/" target="_blank">🔗 網站</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -467,14 +1187,21 @@
         <div class="tl-body">
           <div class="tl-label">🛍️ 美國村</div>
           <div class="tl-note">Blue Seal 冰淇淋＋逛街</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=アメリカンビレッジ+北谷町" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://www.okinawa-americanvillage.com/" target="_blank">🔗 網站</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-time">16:30</div>
         <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
         <div class="tl-body">
-          <div class="tl-label">🏖️ Tropical Beach</div>
-          <div class="tl-note">美國村旁 5 分鐘</div>
+          <div class="tl-label">🏖️ 安良波海灘（Araha Beach）</div>
+          <div class="tl-note">美國村步行 2 分鐘・夕陽名所・帆船遊樂場</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=安良波公園ビーチ+北谷町" target="_blank">📍 導航</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -484,6 +1211,10 @@
           <div class="tl-label">🛒 AEON Mall Rycom</div>
           <div class="tl-note">寶可夢中心・吉卜力・藥妝採購</div>
           <span class="tag tag-tip">退稅 5,000¥ 以上</span>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=イオンモール沖縄ライカム+北中城村" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://okinawa-rycom.aeon.jp/" target="_blank">🔗 網站</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -496,14 +1227,14 @@
     </div>
     <div class="rain-box">
       <div class="rain-title">☔ 雨天備案</div>
-      <div class="rain-text">Tropical Beach 跳過，PARCO CITY＋AEON 各多逛一圈（室內）</div>
+      <div class="rain-text">① 安良波海灘跳過，延長美國村逛街時間<br>② PARCO CITY＋AEON 各多逛一圈（室內）</div>
     </div>
   </div>
 
   <!-- DAY 4 -->
-  <div class="day-card day-4">
-    <div class="day-header">
-      <div class="day-num">04</div>
+  <div class="day-card day-4" id="day4">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">4</span></div>
       <div class="day-info">
         <div class="day-date">5/15（五）</div>
         <div class="day-theme">🌊 北部大日遊</div>
@@ -523,6 +1254,10 @@
         <div class="tl-body">
           <div class="tl-label">🪨 萬座毛（象鼻岩）</div>
           <div class="tl-note">100¥ 入場，約 30 分鐘</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=万座毛+恩納村" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://manzamo.jp/" target="_blank">🔗 網站</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -532,6 +1267,11 @@
           <div class="tl-label">🤿 青之洞窟浮潛</div>
           <div class="tl-note">恩納村，約 1.5~2 小時</div>
           <span class="tag tag-book">🔴 需提前預約</span>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=青の洞窟+恩納村" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-book" href="https://www.kkday.com/zh-tw/product/20276" target="_blank">📅 KKday</a>
+            <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/1857-blue-cave-snorkeling-okinawa/" target="_blank">📅 Klook</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -540,6 +1280,10 @@
         <div class="tl-body">
           <div class="tl-label">🌉 古宇利島</div>
           <div class="tl-note">心形岩打卡，約 1 小時</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=古宇利島ハートロック+今帰仁村" target="_blank">📍 心形岩</a>
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=古宇利大橋+今帰仁村" target="_blank">📍 古宇利大橋</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -551,6 +1295,11 @@
           <div class="tl-note">海豚秀：10:30 / 11:30 / 13:00 / 15:00 / 17:00</div>
           <div class="tl-note">鯨鯊餵食：15:00 / 17:00</div>
           <span class="tag tag-book">🔴 需提前購票</span>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=沖縄美ら海水族館+本部町" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://churaumi.okinawa/" target="_blank">🔗 網站</a>
+            <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/2248-okinawa-churaumi-aquarium-ticket/" target="_blank">📅 Klook</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -568,9 +1317,9 @@
   </div>
 
   <!-- DAY 5 -->
-  <div class="day-card day-5">
-    <div class="day-header">
-      <div class="day-num">05</div>
+  <div class="day-card day-5" id="day5">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">5</span></div>
       <div class="day-info">
         <div class="day-date">5/16（六）</div>
         <div class="day-theme">🛍️ 購物・返國</div>
@@ -583,6 +1332,9 @@
         <div class="tl-body">
           <div class="tl-label">🐟 泊港漁市場 早餐</div>
           <div class="tl-note">7 點開，鮪魚蓋飯（現殺海鮮）</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=泊いゆまち+那覇市" target="_blank">📍 導航</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -591,6 +1343,10 @@
         <div class="tl-body">
           <div class="tl-label">🏷️ ASHIBINAA Outlet</div>
           <div class="tl-note">GUCCI・Coach・MK 等精品</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=アウトレットモールあしびなー+豊見城市" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://www.ashibinaa.com/" target="_blank">🔗 網站</a>
+          </div>
         </div>
       </div>
       <div class="tl-item">
@@ -624,55 +1380,263 @@
     </div>
   </div>
 
-  <!-- BOOKING -->
-  <div class="section-title">📋 出發前必辦預訂</div>
-  <div class="booking-card">
-    <div class="booking-item">
-      <div class="booking-dot"></div>
+  </div><!-- /.schedule-wrap -->
+
+  <!-- PRE-TRIP PREP & BOOKING (merged) -->
+  <div class="section-title collapse-toggle" id="prep">🗓️ 出發前準備 &amp; 預訂</div>
+  <div class="merge-card">
+
+    <!-- 必辦預訂 -->
+    <div class="merge-sub collapse-toggle">🔴 必辦預訂（越早越好）</div>
+    <div class="merge-row">
+      <div class="merge-dot"></div>
       <div>
-        <div class="booking-name">Gangala 之谷</div>
-        <div class="booking-detail">gangala.com 預約・名額有限，越早越好！</div>
+        <div class="merge-name">Gangala 之谷</div>
+        <div class="merge-detail">gangala.com 預約・名額有限，越早越好！</div>
+        <div class="tl-actions" style="margin-top:6px">
+          <a class="tl-btn tl-btn-book" href="https://book.gangala.com/?lng=zh-TW" target="_blank">📅 預約</a>
+          <a class="tl-btn tl-btn-web" href="https://gangala.com/" target="_blank">🔗 網站</a>
+        </div>
       </div>
     </div>
-    <div class="booking-item">
-      <div class="booking-dot"></div>
+    <div class="merge-row">
+      <div class="merge-dot"></div>
       <div>
-        <div class="booking-name">Churasun 6 表演</div>
-        <div class="booking-detail">KKday / Klook・普通席 ¥5,500・遲到 15 分不退款</div>
+        <div class="merge-name">Churasun 6 表演</div>
+        <div class="merge-detail">普通席 ¥5,500・場次：20:30 or 22:30・遲到 15 分不退款</div>
+        <div class="tl-actions" style="margin-top:6px">
+          <a class="tl-btn tl-btn-book" href="https://www.footprintokinawa.com/zh-TW/tickets/87" target="_blank">📅 購票</a>
+        </div>
       </div>
     </div>
-    <div class="booking-item">
-      <div class="booking-dot"></div>
+    <div class="merge-row">
+      <div class="merge-dot"></div>
       <div>
-        <div class="booking-name">美麗海水族館</div>
-        <div class="booking-detail">KKday / Klook 提前購票，配合海豚秀時間安排</div>
+        <div class="merge-name">美麗海水族館</div>
+        <div class="merge-detail">KKday / Klook 提前購票，配合海豚秀時間安排</div>
+        <div class="tl-actions" style="margin-top:6px">
+          <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/2248-okinawa-churaumi-aquarium-ticket/" target="_blank">📅 Klook</a>
+          <a class="tl-btn tl-btn-web" href="https://churaumi.okinawa/" target="_blank">🔗 官網</a>
+        </div>
       </div>
     </div>
-    <div class="booking-item">
-      <div class="booking-dot"></div>
+    <div class="merge-row">
+      <div class="merge-dot"></div>
       <div>
-        <div class="booking-name">街頭卡丁車</div>
-        <div class="booking-detail">KKday / Klook・約 ¥8,000/人・4 人各自預約同方案，帶駕照+譯本</div>
+        <div class="merge-name">街頭卡丁車</div>
+        <div class="merge-detail">約 ¥8,000/人・身高 145~185cm・4 人各自預約，帶駕照+譯本</div>
+        <div class="tl-actions" style="margin-top:6px">
+          <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/2739-street-go-karting-okinawa/" target="_blank">📅 Klook</a>
+        </div>
       </div>
     </div>
-    <div class="booking-item">
-      <div class="booking-dot"></div>
+    <div class="merge-row">
+      <div class="merge-dot"></div>
       <div>
-        <div class="booking-name">青之洞窟浮潛</div>
-        <div class="booking-detail">KKday / Klook・可選含接送方案</div>
+        <div class="merge-name">青之洞窟浮潛</div>
+        <div class="merge-detail">KKday / Klook・可選含接送方案</div>
+        <div class="tl-actions" style="margin-top:6px">
+          <a class="tl-btn tl-btn-book" href="https://www.kkday.com/zh-tw/product/20276" target="_blank">📅 KKday</a>
+          <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/1857-blue-cave-snorkeling-okinawa/" target="_blank">📅 Klook</a>
+        </div>
       </div>
     </div>
-    <div class="booking-item">
-      <div class="booking-dot warn"></div>
+    <div class="merge-row">
+      <div class="merge-dot warn"></div>
       <div>
-        <div class="booking-name">南城美術館</div>
-        <div class="booking-detail">⚠️ 出發前確認 5 月是否開放（換檔期中）</div>
+        <div class="merge-name">南城美術館</div>
+        <div class="merge-detail">⚠️ 出發前確認 5 月是否開放（換檔期中）</div>
       </div>
+    </div>
+
+    <!-- 行前準備 -->
+    <div class="merge-sub collapse-toggle">📋 行前準備事項</div>
+    <div class="merge-row">
+      <div class="merge-num">1</div>
+      <div>
+        <div class="merge-name">🛂 護照</div>
+        <div class="merge-detail">還沒辦的快去辦！盡量 4 月底前完成，效期需大於 6 個月</div>
+      </div>
+    </div>
+    <div class="merge-row">
+      <div class="merge-num">2</div>
+      <div>
+        <div class="merge-name">✈️ 簽證（Visit Japan Web）</div>
+        <div class="merge-detail">日本觀光免簽，但需上 Visit Japan Web 填寫入境資訊</div>
+        <div class="tl-actions" style="margin-top:6px">
+          <a class="tl-btn tl-btn-web" href="https://www.vjw.digital.go.jp/main/#/vjwplo001" target="_blank">🔗 官網</a>
+          <a class="tl-btn tl-btn-web" href="https://www.youtube.com/watch?v=89b227fKTsw&t=322s" target="_blank">▶️ 教學影片</a>
+        </div>
+      </div>
+    </div>
+    <div class="merge-row">
+      <div class="merge-num">3</div>
+      <div>
+        <div class="merge-name">💴 退稅 QR Code</div>
+        <div class="merge-detail">日本全面改機場退稅，於 Visit Japan Web 申請免稅 QR Code，申請後截圖備用</div>
+      </div>
+    </div>
+    <div class="merge-row">
+      <div class="merge-num">4</div>
+      <div>
+        <div class="merge-name">🚗 自駕準備</div>
+        <div class="merge-detail">看日本交通規則影片・申請日文駕照譯本<br>出國需帶：護照＋台灣駕照正本＋日文譯本<br>確認住宿有停車位或使用收費停車場</div>
+      </div>
+    </div>
+    <div class="merge-row">
+      <div class="merge-num">5</div>
+      <div>
+        <div class="merge-name">📱 SIM 卡 &amp; 現金</div>
+        <div class="merge-detail">確認手機支援 eSIM 或實體 SIM，約 1–2 GB 即夠<br>部分店家不支援電子支付，備妥日幣紙鈔與硬幣</div>
+      </div>
+    </div>
+    <div class="merge-row">
+      <div class="merge-num">6</div>
+      <div>
+        <div class="merge-name">🎟️ 景點套票比價</div>
+        <div class="merge-detail">部分景點在 KKday / Klook 購買更便宜，三合一・五合一套票尤其值得比價</div>
+        <div class="tl-actions" style="margin-top:6px">
+          <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/8900-churaumi-toku-toku-5-pass-okinawa/" target="_blank">📅 五合一套票</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行李清單 -->
+    <div class="merge-sub collapse-toggle">🎒 行李清單</div>
+    <div class="pack-grid">
+      <div class="pack-item hi">護照（效期 &gt; 6 個月）</div>
+      <div class="pack-item hi">台灣駕照正本</div>
+      <div class="pack-item hi">日文駕照譯本</div>
+      <div class="pack-item hi">日幣現鈔</div>
+      <div class="pack-item hi">eSIM / SIM 卡（設定好）</div>
+      <div class="pack-item hi">泳裝（浮潛必備）</div>
+      <div class="pack-item">機票截圖（備用）</div>
+      <div class="pack-item">訂房確認信截圖</div>
+      <div class="pack-item">旅平險 + 不便險單據</div>
+      <div class="pack-item">信用卡（Visa / Master）</div>
+      <div class="pack-item">行動電源</div>
+      <div class="pack-item">充電器（日規 A 型相容）</div>
+      <div class="pack-item">防曬乳 SPF50+</div>
+      <div class="pack-item">帽子 / 太陽眼鏡</div>
+      <div class="pack-item">摺疊傘 / 輕便雨衣</div>
+      <div class="pack-item">運動涼鞋（海灘用）</div>
+      <div class="pack-item">暈車藥</div>
+      <div class="pack-item">常備藥（胃藥、退燒）</div>
+    </div>
+
+  </div>
+
+  <!-- TO DO LIST -->
+  <div class="section-title collapse-toggle">✅ 待辦清單</div>
+  <div class="todo-card">
+    <div class="todo-person">
+      <div class="todo-person-tag blue">@013沈陽 &amp; @蓮</div>
+      <div class="todo-task">機票、飯店確認</div>
+      <div class="todo-task">Visit Japan Web 帳戶申請 + 簽證申請</div>
+      <div class="todo-task">旅平險 + 不便險</div>
+      <div class="todo-task">護照效期確認（需大於 6 個月）</div>
+      <div class="todo-task hi">eSIM 辦理</div>
+      <div class="todo-task hi">換日幣現鈔</div>
+    </div>
+    <div class="todo-person">
+      <div class="todo-person-tag teal">@鍾政洵</div>
+      <div class="todo-task">護照申請</div>
+      <div class="todo-task">機票上的護照號碼、護照效期確認</div>
+      <div class="todo-task">Visit Japan Web 簽證申請</div>
+      <div class="todo-task hi">日文譯本（汽車）申請</div>
+      <div class="todo-task hi">熟記日本交通規則（租車公司也會上課，大家都要上）</div>
+      <div class="todo-task">旅平險 + 不便險</div>
+      <div class="todo-task hi">換日幣現鈔（建議約台幣 1 萬）</div>
+      <div class="todo-task hi">eSIM 辦理</div>
+    </div>
+    <div class="todo-person">
+      <div class="todo-person-tag coral">@Waiting</div>
+      <div class="todo-task">旅平險 + 不便險</div>
+      <div class="todo-task hi">SIM 卡 or eSIM 確認</div>
+      <div class="todo-task hi">日文譯本（機車＋汽車）申請</div>
     </div>
   </div>
 
+
+  <!-- CANDIDATE SPOTS -->
+  <div class="section-title collapse-toggle">🗺️ 景點總覽</div>
+  <div class="cand-wrap">
+
+    <!-- 北部 -->
+    <div class="cand-section">
+      <div class="cand-cat-label collapse-toggle">🔵 北部</div>
+      <div class="cand-chips">
+        <span class="cand-region">🐠 水族館 / 自然</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=沖縄美ら海水族館+本部町" target="_blank">沖繩美麗海水族館</a>
+        <span class="cand-region">🌿 景點</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=古宇利島ハートロック+今帰仁村" target="_blank">古宇利島</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=ディノパーク+やんばる亜熱帯の森" target="_blank">Dino Park Yanbaru</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=名護パイナップルパーク+名護市" target="_blank">名護鳳梨園</a>
+        <span class="cand-region">🛍️ 購物 / 美食</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=御菓子御殿+名護店" target="_blank">御菓子御殿 名護店</a>
+      </div>
+    </div>
+
+    <!-- 中部 -->
+    <div class="cand-section">
+      <div class="cand-cat-label collapse-toggle">🟡 中部</div>
+      <div class="cand-chips">
+        <span class="cand-region">🌿 景點 / 自然</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=万座毛+恩納村" target="_blank">萬座毛</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=残波岬+読谷村" target="_blank">殘波岬</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=安良波公園ビーチ+北谷町" target="_blank">安良波海灘</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=東南植物楽園+沖縄市" target="_blank">東南植物樂園</a>
+        <span class="cand-region">🏘️ 文化 / 體驗</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=琉球村+恩納村" target="_blank">琉球村</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=港川外人住宅街+浦添市" target="_blank">港川外人住宅</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=アメリカンビレッジ+北谷町" target="_blank">美國村</a>
+        <span class="cand-region">🛍️ 購物</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=PARCO+CITY浦添" target="_blank">PARCO CITY 浦添</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=イオンモール沖縄ライカム+北中城村" target="_blank">AEON MALL Rycom</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=サンエー宜野湾コンベンションシティ" target="_blank">San-A Ginowan</a>
+        <span class="cand-region">🐟 市場 / 海鮮</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=JAおきなわ農産物直売所+ちゃんぷるー市場" target="_blank">JA Chanpuru Ichiba</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=JAおきなわ読谷ゆんた市場" target="_blank">JA Yunta Ichiba</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=ぱやお市場+沖縄市" target="_blank">Payao Market</a>
+      </div>
+    </div>
+
+    <!-- 南部 -->
+    <div class="cand-section">
+      <div class="cand-cat-label collapse-toggle">🔴 南部</div>
+      <div class="cand-chips">
+        <span class="cand-region">🌿 景點 / 自然</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=瀬長島ウミカジテラス+豊見城市" target="_blank">瀨長島</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=瀬長島+豊見城市" target="_blank">瀨長島「戀之島」</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=奥武島+南城市" target="_blank">奧武島（貓島）</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=波上宮+那覇市" target="_blank">波上宮</a>
+        <span class="cand-region">🏛️ 文化 / 體驗</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=おきなわワールド+南城市" target="_blank">沖繩世界</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=ガンガラーの谷+南城市" target="_blank">Gangala 之谷</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=玉泉洞+南城市" target="_blank">玉泉洞</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=那覇国際通り" target="_blank">國際通商店街</a>
+        <span class="cand-region">🐠 水族館 / 博物館</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=DMMかりゆし水族館+豊見城市" target="_blank">DMM Kariyushi 水族館</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=南城市地域物産館" target="_blank">南城美術館</a>
+        <span class="cand-region">🛍️ 購物 / Outlet</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=アウトレットモールあしびなー+豊見城市" target="_blank">ASHIBINAA Outlet</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=DFSギャラリア沖縄+那覇市" target="_blank">迪斐世 那霸店</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=サンエーなはメインプレイス+那覇市" target="_blank">San-A Naha Main Place</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=トミトン+豊見城市" target="_blank">豐崎 TOMITON</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=イーアス沖縄豊崎" target="_blank">iias 沖繩豐崎</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=イオンスタイル来客夢+豊見城市" target="_blank">永旺 STYLE 來客夢</a>
+        <span class="cand-region">🐟 市場 / 海鮮</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=泊いゆまち+那覇市" target="_blank">泊港漁市場</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=第一牧志公設市場+那覇市" target="_blank">牧志公設市場</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=糸満漁業協同組合直売センター" target="_blank">糸滿魚市場</a>
+      </div>
+    </div>
+
+  </div>
+
+
   <!-- NOTES -->
-  <div class="section-title">📌 重要提醒</div>
+  <div class="section-title collapse-toggle" id="notes">📌 重要提醒</div>
   <div class="notes-card">
     <div class="note-item"><span class="note-icon">🚌</span><span>OTS 接駁：國際線施工中，需步行至國內線 10-A 站牌，每 20 分鐘一班</span></div>
     <div class="note-item"><span class="note-icon">🏎️</span><span>卡丁車：身高限制 145~185cm，各自預約需告知同行</span></div>
@@ -683,7 +1647,476 @@
 
 </div>
 
+<!-- 以下為草稿資料，已整合進頁面，可日後刪除 -->
+ <!--vvvvvvvvvvvvvvvvvvvvvvvv出國前準備
+
+(one)護照
+還沒辦的人 快滾去辦
+盡量在4月底前處理好
+
+(two)簽證
+日本採觀光免簽
+需要上Visit Japan Web填寫
+網址 :https://www.vjw.digital.go.jp/main/#/vjwplo001
+教學 : https://www.youtube.com/watch?v=89b227fKTsw&t=322s
+
+(three)退稅
+日本有現場退稅
+但因為今年11月將全面改機場退稅
+所以先申請好免稅QR Code
+避免店家已經改採QRCode方式退稅
+(於Visit Japan Web申請)
+(申請完成後建議截圖QRCode 
+避免無網路時跑不出來)
+
+(four)自駕
+上網看交通規則影片
+申請日文譯本
+(出國時需帶護照、台灣駕照正本、日文譯本)
+因日本交通規定一定要有停車位
+所以住宿需考慮是否有停車位
+不然停收費停車場
+(但須注意停車費規定
+有些有時段不同收費機制)
+
+(five)景點&餐廳
+熱門餐廳一般來說要提早預約
+不然進不去
+
+景點門票與遊玩項目
+有時在台灣先買門票或多合一劵
+比較便宜
+
+(six)sim卡&現金
+先確認手機是否eSim or Sim卡 
+約1GB 或 2GB就夠用
+除非網路重度使用者
+
+因沖繩有些店家不一定能電子支付
+建議準備紙鈔與硬幣備用
+
+
+
+
+
+影片
+https://youtu.be/mZJHCSPYdNE?si=2Rq5fAIvxAyGvxuw
+
+
+To Do List
+
+@013沈陽 @蓮 
+- 機票、飯店確認
+- Visit Japan Web 帳戶申請、簽證申請
+- 旅平險+不便險 
+
+**- esim
+**- 換日幣現鈔
+**- 護照效期大於6個月
+(這幾個你們應該可以自行搞定(hyper))
+
+@鍾政洵 
+- 護照申請
+- 機票上的護照號碼、護照效期確認
+- Visit Japan Web 簽證申請
+- 日文譯本(汽車)
+- 熟記日本交通規則(到時租車公司也會上課 大家都要上)
+- 旅平險+不便險 
+- 換日幣現鈔(建議約一萬台幣)
+- esim
+
+@Waiting 
+- 旅平險+不便險
+- sim or esim??
+- 日文譯本(機車、汽車)
+
+以下是舊的行程規劃(不用照抄或修改 只是想給你當參考 看可以怎麼在改 可以題意見 但不要把現在的更改掉)
+════════════════════════════════════════════════════════════════
+  沖繩五天四夜行程表  5/12（二）～ 5/16（六）
+  高雄出發 ｜ 自駕 ｜ 去程 13:00 到 ｜ 回程 14:30 飛
+════════════════════════════════════════════════════════════════
+
+⚠️ Gangala 之谷預約資訊（重要！）
+  費用：¥2,500/人（學生 ¥1,500，小學以下免費）
+  導覽時段：10:00 / 12:00 / 14:00 / 16:00（每場 80 分鐘）
+  預約期限：前一天 17:00 前網路預約
+  線上預約：https://book.gangala.com/?lng=en-US
+  電話預約：098-948-4192（9:00-17:30）
+  集合地點：Cave Cafe（洞窟咖啡廳），開始前 10 分鐘到
+  注意：沒預約不能進！雨天照常舉行
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  方案 A：全程住那霸（國際通附近）
+  不搬行李、每晚都能逛國際通、最簡單
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+────────────────────────────────────
+D1｜5/12（二）半天 — 機場周邊
+住宿：那霸（國際通附近）
+────────────────────────────────────
+  13:00  到那霸機場 → 取車（約 30-60 分鐘）
+  14:30  瀨長島 + 戀之島（機場旁 10 分鐘）
+           推薦：幸せのパンケーキ（海景鬆餅）
+  16:00  DMM Kariyushi 水族館（豐崎，同區）
+  17:30  ASHIBINAA Outlet（可跳過）
+  18:30  國際通晚餐散步
+           推薦：石垣牛燒肉 or 阿古豬涮涮鍋
+
+────────────────────────────────────
+D2｜5/13（三）全天 — 北部
+住宿：那霸
+────────────────────────────────────
+  08:00  出發北上（約 2 小時）
+           途中可停：道の駅許田（便宜門票+小吃）
+  10:00  ⭐ 美麗海水族館（待 2-2.5 小時）
+  12:30  午餐
+           推薦：花人逢（海景沖繩披薩）
+           　　　きしもと食堂（百年沖繩麵）
+  13:30  ⭐ 古宇利島（跨海大橋 + 心形石）
+  15:00  名護鳳梨園（搭小車遊園，鳳梨試吃）
+  16:00  Dino Park + 御菓子御殿名護店
+           必買：紅芋塔（沖繩伴手禮 No.1）
+  17:00  回那霸（約 1.5-2 小時）⚠️ 這段比較累
+  19:30  國際通晚餐
+           推薦：居酒屋放鬆
+
+────────────────────────────────────
+D3｜5/14（四）全天 — 中部
+住宿：那霸
+────────────────────────────────────
+  09:00  萬座毛（那霸出發約 1 小時）
+  10:00  ⭐ 殘波岬（燈塔 + 斷崖）
+  11:00  JA 讀谷農產市場（買芒果、百香果）
+  11:30  琉球村（傳統文化體驗）
+  13:00  午餐
+           推薦：King Tacos（塔可飯元祖）
+  14:30  ⭐ 美國村（慢逛拍照）
+           推薦：A&W 漢堡（沖繩限定）
+  16:30  港川外人住宅（文青小店）
+           推薦：oHacorte 水果塔
+  17:30  PARCO CITY 或 AEON Rycom（購物+晚餐）
+  19:30  回那霸（30-40 分鐘）
+
+────────────────────────────────────
+D4｜5/15（五）全天 — 南部
+住宿：那霸
+────────────────────────────────────
+  09:00  ⭐ 沖繩世界 + 玉泉洞（鐘乳石洞，走完約 30 分鐘）
+  11:00  ⭐ Gangala 之谷（⚠️ 要預約！10:50 前到 Cave Cafe 集合）
+  12:30  ⭐ 奧武島
+           必吃：中本鮮魚天婦羅（¥100/個，排隊名店）
+  13:30  糸滿魚市場（生魚片+海葡萄，現買現吃）
+  15:00  波上宮（那霸唯一海邊神社）
+  16:00  泊港漁市場（CP 值超高海鮮丼）
+  17:30  牧志市場（一樓買海鮮，二樓代客料理）
+  18:30  國際通最後一晚
+           推薦：琉球銘菓三矢甜甜圈（¥150）
+
+────────────────────────────────────
+D5｜5/16（六）半天 — 掃貨回家
+────────────────────────────────────
+  09:00  迪斐世免稅店 or San-A Naha Main Place
+  10:30  退房收拾
+  11:30  還車 → 機場
+  12:30  機場免稅店（ROYCE 巧克力、雪鹽餅乾）
+  14:30  ✈️ 回高雄
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  方案 B：那霸 2 晚 + 北谷（美國村）2 晚
+  D3 下午換到北谷，省中部車程，美國村摩天輪夜景
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+────────────────────────────────────
+D1｜5/12（二）半天 — 機場周邊
+住宿：那霸（國際通附近）
+────────────────────────────────────
+  13:00  到那霸機場 → 取車
+  14:30  瀨長島 + 戀之島
+           推薦：幸せのパンケーキ（海景鬆餅）
+  16:00  DMM Kariyushi 水族館
+  17:30  ASHIBINAA Outlet（可跳過）
+  18:30  國際通晚餐
+           推薦：石垣牛燒肉 or 阿古豬涮涮鍋
+
+────────────────────────────────────
+D2｜5/13（三）全天 — 北部
+住宿：那霸（最後一晚）
+────────────────────────────────────
+  08:00  出發北上（約 2 小時）
+           途中可停：道の駅許田
+  10:00  ⭐ 美麗海水族館（2-2.5 小時）
+  12:30  午餐
+           推薦：花人逢 or きしもと食堂
+  13:30  ⭐ 古宇利島
+  15:00  名護鳳梨園
+  16:00  Dino Park + 御菓子御殿（買紅芋塔）
+  17:00  回那霸（約 1.5-2 小時）
+  19:30  國際通晚餐 + 居酒屋
+
+────────────────────────────────────
+D3｜5/14（四）全天 — 南部 → 換飯店到北谷
+住宿：北谷（美國村附近）
+────────────────────────────────────
+  08:30  退房，行李放車上
+  09:00  ⭐ 沖繩世界 + 玉泉洞
+  11:00  ⭐ Gangala 之谷（⚠️ 要預約！10:50 集合）
+  12:30  ⭐ 奧武島
+           必吃：中本鮮魚天婦羅（¥100/個）
+  13:30  糸滿魚市場（生魚片現吃）
+  15:00  北上到北谷（約 40 分鐘）→ check-in
+  16:00  美國村散步、海邊
+  18:00  晚餐
+           推薦：牛武士燒肉（海景 A5 和牛）
+  20:00  美國村摩天輪夜景 🎡
+
+────────────────────────────────────
+D4｜5/15（五）全天 — 中部（住北谷超方便！）
+住宿：北谷
+────────────────────────────────────
+  09:00  ⭐ 萬座毛（北谷出發只要 30 分鐘）
+  10:00  ⭐ 殘波岬
+  11:00  JA 讀谷農產市場（買水果）
+  11:30  琉球村
+  13:00  午餐
+           推薦：King Tacos（塔可飯元祖）
+  14:00  AEON Rycom（超大購物中心）
+  16:00  回北谷休息
+  17:00  Tropical Beach 看夕陽（宜野灣，北谷隔壁）
+  18:30  美國村最後一晚
+           推薦：A&W 漢堡 + 海邊酒吧
+
+────────────────────────────────────
+D5｜5/16（六）半天 — 北谷 → 機場
+────────────────────────────────────
+  08:30  退房
+  09:00  港川外人住宅（北谷往南 15 分鐘，順路）
+           推薦：oHacorte 水果塔當早餐
+  10:00  波上宮（那霸海邊神社，順路）
+  10:40  迪斐世免稅店（快速掃貨）
+  11:30  還車 → 機場
+  12:30  機場免稅店
+  14:30  ✈️ 回高雄
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  兩方案比較
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                   方案 A（全那霸）    方案 B（那霸+北谷）
+  搬行李            不用              D3 搬一次
+  國際通            每晚都能去         D1、D2 兩晚
+  美國村夜景        白天去就走         D3、D4 兩晚（摩天輪）
+  D4 中部車程       那霸出發 1hr      北谷出發 30min
+  D5 到機場         15 分鐘           40 分鐘
+  晚上氣氛          熱鬧（餐廳多）     海景（氣氛好）
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  5 月梅雨備案
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  5 月中沖繩可能已進入梅雨季，下雨的話：
+
+  不怕雨（室內）：
+    美麗海水族館、DMM 水族館、沖繩世界（玉泉洞）、
+    Gangala 之谷、琉球村部分、購物中心全部
+
+  受影響（室外）：
+    古宇利島、萬座毛、殘波岬、Tropical Beach、瀨長島
+    → 下雨就跟購物中心行程對調
+
+  建議每天出門前看天氣，彈性調整室內/室外順序
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  被刪掉的景點（備案）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  南城美術館        → 暫時關閉
+  東南植物樂園      → 時間不夠，中部已很滿
+  Payao 漁市場      → 沖繩市偏遠，有糸滿+泊港就夠
+  TOMITON / iias    → 跟 ASHIBINAA 太近，選一間
+  San-A Ginowan     → 購物中心太多，精選就好
+  永旺來客夢        → 超市，不是景點
+  JA Chanpuru（名護）→ D2 北部已很滿
+  泊港漁市場（方案B）→ D5 時間不夠，移到備案
+
+  如果某天提早結束，可以從這裡挑一個補上！
+  (結束)
+
+  以下是資訊
+  (good)(good)租車(good)(good)
+https://www.otsinternational.jp/otsrentacar/cn/okinawa/reserve/cart/
+
+(good)(good)飯店(good)(good)
+(待補)
+
+(good)(good)Churasun6沖繩 成人遊樂場(good)(good)
+https://www.footprintokinawa.com/zh-TW/tickets/87
+
+(good)(good)卡丁車(good)(good)
+https://www.klook.com/zh-TW/activity/2739-street-go-karting-okinawa/
+
+(good)(good)浮潛(good)(good)
+恩納村浮潛
+
+(good)(good)(good)景點三合一/五合一(good)(good)(good)
+(Edward)(Edward)三合一(任選以下3個景點)(Edward)(Edward)
+景點門票:任選3個景點
+任選以下3個景點
+(wave)沖繩水果樂園(含熱帶王國入場)
+(wave)沖繩名護自然動植物公園(不含沖繩單軌電車費)
+(wave)東南植物樂園
+(wave)沖繩兒童王國
+(wave)體驗王國
+(wave)識名園
+(wave)沖繩舊海軍司令部壕
+(wave)沖繩世界文化王國/玉泉洞)
+(wave)沖繩平和祈念堂
+(wave)恐龍公園
+(wave)琉球村
+(wave)首里城公園
+(wave)沖繩 Little Universe OKINAWA 微型主題樂園
+(wave)姬百合和平祈念資料館
+(wave)安田秧雞公園
+
+(Edward)(Edward)五合一(Edward)(Edward)
+景點門票:沖繩美麗海水族館&任選4個景點
+任選以下4個景點
+(wave)沖繩水果樂園(含熱帶王國入場)
+(wave)沖繩名護自然動植物公園(不含沖繩單軌電車費)
+(wave)沖繩兒童王國
+(wave)琉球村
+(wave)體驗王國
+(wave)識名園
+(wave)沖繩舊海軍司令部壕
+(wave)沖繩世界文化王國/玉泉洞)
+(wave)沖繩平和祈念堂
+(wave)古宇利海洋塔
+(wave)首里城公園
+(wave)姬百合和平祈念資料館
+(wave)玉陵
+(wave)名護鳳梨園
+(wave)沖繩小宇宙(Little Universe OKINAWA)
+https://www.klook.com/zh-TW/activity/8900-churaumi-toku-toku-5-pass-okinawa/?spm=SearchResult.SearchResult_LIST&clickId=092d400f6e
+-->
 <div class="footer">沖繩 2026・5天4夜・4人自駕</div>
+
+<script>
+  // ── COLLAPSE SYSTEM ──
+  (function() {
+    function wrapInCollapse(elements) {
+      if (!elements.length) return null;
+      var body = document.createElement('div');
+      body.className = 'collapse-body';
+      var inner = document.createElement('div');
+      inner.className = 'collapse-inner';
+      body.appendChild(inner);
+      elements[0].parentNode.insertBefore(body, elements[0]);
+      elements.forEach(function(el) { inner.appendChild(el); });
+      return body;
+    }
+
+    // Day card headers → wrap .timeline + .rain-box siblings
+    document.querySelectorAll('.day-header.collapse-toggle').forEach(function(header) {
+      var siblings = Array.from(header.parentNode.children).filter(function(el) {
+        return el !== header;
+      });
+      wrapInCollapse(siblings);
+    });
+
+    // Section titles → wrap their next sibling card
+    document.querySelectorAll('.section-title.collapse-toggle').forEach(function(title) {
+      var next = title.nextElementSibling;
+      if (next) wrapInCollapse([next]);
+    });
+
+    // cand-cat-label → wrap .cand-chips
+    document.querySelectorAll('.cand-cat-label.collapse-toggle').forEach(function(label) {
+      var next = label.nextElementSibling;
+      if (next && next.classList.contains('cand-chips')) wrapInCollapse([next]);
+    });
+
+    // merge-sub → wrap following rows until next merge-sub
+    document.querySelectorAll('.merge-sub.collapse-toggle').forEach(function(sub) {
+      var toWrap = [];
+      var sib = sub.nextElementSibling;
+      while (sib && !sib.classList.contains('merge-sub')) {
+        toWrap.push(sib);
+        sib = sib.nextElementSibling;
+      }
+      wrapInCollapse(toWrap);
+    });
+
+    // Attach click handlers to all toggles
+    document.querySelectorAll('.collapse-toggle').forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        // Don't fire if click was on a button/link inside the header
+        if (e.target !== toggle && (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a, button'))) return;
+        toggle.classList.toggle('is-closed');
+      });
+    });
+
+    // Default: all sections start collapsed
+    document.querySelectorAll('.collapse-toggle').forEach(function(toggle) {
+      toggle.classList.add('is-closed');
+    });
+  })();
+
+  // ── STICKY NAV: scroll tracking + smooth scroll + auto-expand ──
+  (function() {
+    var targets = ['day1','day2','day3','day4','day5','prep','notes'];
+    var navBtns = Array.from(document.querySelectorAll('.day-nav-btn'));
+
+    function getActive() {
+      var scrollY = window.scrollY + 80;
+      var active = null;
+      for (var i = 0; i < targets.length; i++) {
+        var el = document.getElementById(targets[i]);
+        if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
+          active = targets[i];
+        }
+      }
+      return active;
+    }
+
+    function updateNav() {
+      var active = getActive();
+      navBtns.forEach(function(btn) {
+        var href = btn.getAttribute('href');
+        var isActive = href && active && href === '#' + active;
+        btn.classList.toggle('active', !!isActive);
+      });
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // Smooth scroll + auto-expand collapsed section
+    navBtns.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        var href = btn.getAttribute('href');
+        if (!href || href === '#') return;
+        var target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          // Auto-expand if the target or its direct toggle child is collapsed
+          var toggleEl = target.classList.contains('collapse-toggle')
+            ? target
+            : target.querySelector('.collapse-toggle');
+          if (toggleEl && toggleEl.classList.contains('is-closed')) {
+            toggleEl.classList.remove('is-closed');
+          }
+          var offset = 56;
+          var top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
