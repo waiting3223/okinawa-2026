@@ -535,6 +535,89 @@
     color: var(--mid);
   }
 
+  /* ── PENDING REVIEW SECTION ── */
+  .pending-section {
+    background: #ECEEF2;
+    border-radius: 16px;
+    padding: 16px 14px 20px;
+  }
+  .pending-cat {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--mid);
+    letter-spacing: 0.5px;
+    margin: 14px 0 8px 2px;
+    padding: 0 0 0 10px;
+    border-left: 3px solid var(--ocean-light);
+  }
+  .pending-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,59,92,0.06);
+  }
+  .pending-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 14px;
+    border-bottom: 1px solid #F0F4F8;
+    transition: background 0.18s;
+  }
+  .pending-item:last-child { border-bottom: none; }
+  .pending-item.voted-yes { background: #EDFAF7; }
+  .pending-item.voted-no  { background: #FFF3F3; }
+  .pending-body { flex: 1; min-width: 0; }
+  .pending-account {
+    font-size: 11px;
+    color: var(--ocean-light);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .pending-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+  .pending-desc {
+    font-size: 12px;
+    color: var(--mid);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+  .pending-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .pending-link {
+    font-size: 11px;
+    color: var(--ocean-light);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .pending-link:hover { text-decoration: underline; }
+  .pending-votes { display: flex; gap: 5px; }
+  .vote-btn {
+    border: none;
+    border-radius: 100px;
+    padding: 4px 11px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1.4;
+  }
+  .vote-yes { background: #E0F7F3; color: #1A8C7A; }
+  .vote-yes:hover, .vote-yes.active { background: #2EC4B6; color: #fff; }
+  .vote-no  { background: #FFE8E8; color: #CC4444; }
+  .vote-no:hover, .vote-no.active  { background: #FF6B6B; color: #fff; }
+
   /* ── FOOTER ── */
   .footer {
     text-align: center;
@@ -940,14 +1023,16 @@
     </div>
 
     <div class="flight-card">
-      <div class="flight-card-header">✈️ <span class="fc-name">蓮 &amp; 沈陽</span></div>
+      <div class="flight-card-header">✈️ <span class="fc-name">蓮 &amp; 沈陽</span><a class="fc-btn fc-btn-inline" href="https://www.flypeach.com/" target="_blank">🍑 樂桃</a></div>
       <div class="flight-row">
         <span class="flight-dir">去程</span>
-        <span class="flight-tba">待補</span>
+        <span class="flight-code">MM922</span>
+        <span class="flight-route">TPE 09:35 → OKA 12:20</span>
       </div>
       <div class="flight-row">
         <span class="flight-dir ret">回程</span>
-        <span class="flight-tba">待補</span>
+        <span class="flight-code">MM922</span>
+        <span class="flight-route">OKA 13:15 → TPE 13:50</span>
       </div>
     </div>
 
@@ -1635,6 +1720,214 @@
   </div>
 
 
+  <!-- PENDING REVIEW -->
+  <div class="section-title collapse-toggle" id="pending">📋 待確認內容（來自沖繩泡泡浴群組 IG Reels）</div>
+  <div class="pending-section">
+
+    <div class="pending-cat">🍜 沖繩美食</div>
+    <div class="pending-card">
+
+      <div class="pending-item" data-id="p1">
+        <div class="pending-body">
+          <div class="pending-account">@11_yumyum</div>
+          <div class="pending-name">沖繩宵夜選擇 熱火版本暖暮拉麵</div>
+          <div class="pending-desc">推薦沖繩宵夜拉麵，熱湯系列</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/11_yumyum" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p1','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p1','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p2">
+        <div class="pending-body">
+          <div class="pending-account">@tweedll</div>
+          <div class="pending-name">沖繩8天吃了什麼</div>
+          <div class="pending-desc">完整8天沖繩美食總覽攻略</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/tweedll" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p2','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p2','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p3">
+        <div class="pending-body">
+          <div class="pending-account">@z24518261</div>
+          <div class="pending-name">沖繩第一站 來這間五百年歷史的魚市場</div>
+          <div class="pending-desc">百年魚市場，第一站必去</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/z24518261" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p3','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p3','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p4">
+        <div class="pending-body">
+          <div class="pending-account">@hvuadf</div>
+          <div class="pending-name">沖繩 炸牛 元村</div>
+          <div class="pending-desc">沖繩炸牛肉餐廳推薦</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/hvuadf" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p4','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p4','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p5">
+        <div class="pending-body">
+          <div class="pending-account">@fta8716</div>
+          <div class="pending-name">沖繩 美食街</div>
+          <div class="pending-desc">沖繩美食街介紹</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/fta8716" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p5','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p5','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p6">
+        <div class="pending-body">
+          <div class="pending-account">@sinsin3399</div>
+          <div class="pending-name">來到沖繩一定要來!! 現在最夯的黑糖手搖</div>
+          <div class="pending-desc">沖繩超夯黑糖珍珠奶茶</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/sinsin3399" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p6','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p6','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p7">
+        <div class="pending-body">
+          <div class="pending-account">@whitesunnie</div>
+          <div class="pending-name">沖繩</div>
+          <div class="pending-desc">沖繩美食 Reel</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/whitesunnie" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p7','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p7','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p8">
+        <div class="pending-body">
+          <div class="pending-account">@kuaile.x</div>
+          <div class="pending-name">沖繩 一日機場周邊玩景攻略</div>
+          <div class="pending-desc">機場周邊一日景點攻略</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/kuaile.x" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p8','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p8','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pending-cat">🗺️ 景點 / 實用資訊</div>
+    <div class="pending-card">
+
+      <div class="pending-item" data-id="p9">
+        <div class="pending-body">
+          <div class="pending-account">@neko4.20</div>
+          <div class="pending-name">沖繩 猫の道</div>
+          <div class="pending-desc">那霸著名貓咪街道景點</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/neko4.20" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p9','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p9','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p10">
+        <div class="pending-body">
+          <div class="pending-name">北谷美國村 週末海上煙火</div>
+          <div class="pending-desc">每週六限定煙火活動</div>
+        </div>
+        <div class="pending-side">
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p10','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p10','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p11">
+        <div class="pending-body">
+          <div class="pending-account">@plzring_2002</div>
+          <div class="pending-name">買張機票 POVA 69超讚旅行術</div>
+          <div class="pending-desc">旅行省錢＆訂票技巧分享</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/plzring_2002" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p11','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p11','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p12">
+        <div class="pending-body">
+          <div class="pending-account">@zhaocaimao.life</div>
+          <div class="pending-name">BicCamera + POCKETALK</div>
+          <div class="pending-desc">去日本購物退稅技巧 + 支援73語言翻譯機推薦</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/zhaocaimao.life" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p12','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p12','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pending-item" data-id="p13">
+        <div class="pending-body">
+          <div class="pending-account">@pennysquare（透過 @zhaocaimao.life）</div>
+          <div class="pending-name">沖繩必買 石垣島辣油</div>
+          <div class="pending-desc">網友大推的沖繩伴手禮</div>
+        </div>
+        <div class="pending-side">
+          <a class="pending-link" href="https://instagram.com/pennysquare" target="_blank">查看原文 ↗</a>
+          <div class="pending-votes">
+            <button class="vote-btn vote-yes" onclick="pendingVote('p13','yes',this)">✓ 要</button>
+            <button class="vote-btn vote-no"  onclick="pendingVote('p13','no',this)">✕ 不要</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- NOTES -->
   <div class="section-title collapse-toggle" id="notes">📌 重要提醒</div>
   <div class="notes-card">
@@ -2005,6 +2298,37 @@ https://www.klook.com/zh-TW/activity/8900-churaumi-toku-toku-5-pass-okinawa/?spm
 <div class="footer">沖繩 2026・5天4夜・4人自駕</div>
 
 <script>
+  // ── PENDING REVIEW VOTES ──
+  function pendingVote(id, vote, btn) {
+    var item = btn.closest('.pending-item');
+    var otherVote = vote === 'yes' ? 'no' : 'yes';
+    if (btn.classList.contains('active')) {
+      btn.classList.remove('active');
+      item.classList.remove('voted-' + vote);
+      localStorage.removeItem('pending_' + id);
+    } else {
+      btn.classList.add('active');
+      item.classList.add('voted-' + vote);
+      item.classList.remove('voted-' + otherVote);
+      var otherBtn = item.querySelector('.vote-' + otherVote);
+      if (otherBtn) otherBtn.classList.remove('active');
+      localStorage.setItem('pending_' + id, vote);
+    }
+  }
+  (function() {
+    document.querySelectorAll('.pending-item').forEach(function(item) {
+      var id = item.dataset.id;
+      var saved = localStorage.getItem('pending_' + id);
+      if (saved) {
+        var btn = item.querySelector('.vote-' + saved);
+        if (btn) {
+          btn.classList.add('active');
+          item.classList.add('voted-' + saved);
+        }
+      }
+    });
+  })();
+
   // ── COLLAPSE SYSTEM ──
   (function() {
     function wrapInCollapse(elements) {
