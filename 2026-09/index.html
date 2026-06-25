@@ -1,0 +1,1773 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>沖繩 2026秋 7天6夜行程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean: #006B8F;
+    --ocean-light: #0090BF;
+    --sky: #E8F6FF;
+    --sand: #FFF8EE;
+    --coral: #FF6B6B;
+    --coral-dark: #E05555;
+    --mint: #2EC4B6;
+    --gold: #F7B731;
+    --dark: #1A2B3C;
+    --mid: #4A6278;
+    --light: #8FA8BC;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--dark);
+    color: var(--dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #003D5C 0%, #006B8F 50%, #0090BF 100%);
+    padding: 48px 20px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 60px;
+    background: var(--dark);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .hero-wave {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(255,255,255,0.5) 28px,
+      rgba(255,255,255,0.5) 30px
+    );
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 4px;
+    color: var(--white);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 8px;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-flights {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .flight-card {
+    flex: 1;
+    min-width: 0;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 14px;
+    padding: 9px 10px 7px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .flight-card-header {
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.60);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .flight-card-header .fc-name {
+    color: rgba(255,255,255,0.90);
+    font-weight: 900;
+  }
+  .flight-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .flight-dir {
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 24px;
+    flex-shrink: 0;
+  }
+  .flight-dir.ret { color: var(--mint); }
+  .flight-code {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--white);
+    min-width: 36px;
+    flex-shrink: 0;
+    letter-spacing: 1px;
+  }
+  .flight-route {
+    font-size: 11px;
+    color: rgba(255,255,255,0.88);
+    flex: 1;
+    line-height: 1.4;
+  }
+  .flight-tba {
+    font-size: 12px;
+    color: rgba(255,255,255,0.30);
+    font-style: italic;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    background: #F2F6FA;
+    padding: 24px 16px 40px;
+  }
+
+  /* ── DAY CARD ── */
+  .day-card {
+    background: var(--white);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,59,92,0.10);
+    animation: fadeUp 0.5s ease both;
+  }
+  .day-card:nth-child(1) { animation-delay: 0.05s; }
+  .day-card:nth-child(2) { animation-delay: 0.10s; }
+  .day-card:nth-child(3) { animation-delay: 0.15s; }
+  .day-card:nth-child(4) { animation-delay: 0.20s; }
+  .day-card:nth-child(5) { animation-delay: 0.25s; }
+  .day-card:nth-child(6) { animation-delay: 0.30s; }
+  .day-card:nth-child(7) { animation-delay: 0.35s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .day-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid #EEF3F8;
+  }
+  .day-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+    flex-shrink: 0;
+  }
+  .day-num-text {
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--light);
+    line-height: 1;
+    margin-bottom: 1px;
+  }
+  .day-num-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    line-height: 0.9;
+    color: var(--ocean);
+  }
+  .day-info {}
+  .day-date { font-size: 11px; color: var(--light); letter-spacing: 1px; text-transform: uppercase; }
+  .day-theme { font-size: 14px; font-weight: 700; color: var(--dark); margin-top: 2px; }
+
+  /* color themes per day */
+  .day-1 .day-num-n { color: #006B8F; }
+  .day-2 .day-num-n { color: #2EC4B6; }
+  .day-3 .day-num-n { color: #F7B731; }
+  .day-4 .day-num-n { color: #006B8F; }
+  .day-5 .day-num-n { color: #FF6B6B; }
+  .day-6 .day-num-n { color: #4A6278; }
+  .day-7 .day-num-n { color: #FF6B6B; }
+
+  /* ── TIMELINE ── */
+  .timeline { padding: 8px 20px 4px 20px; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 60px 1px 1fr;
+    gap: 0 12px;
+    padding: 10px 0;
+    position: relative;
+  }
+  .tl-time {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--mid);
+    padding-top: 2px;
+    text-align: right;
+    line-height: 1.4;
+    word-break: break-word;
+    hyphens: none;
+  }
+  .tl-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .tl-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ocean);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--ocean);
+    flex-shrink: 0;
+    margin-top: 3px;
+    z-index: 1;
+  }
+  .day-3 .tl-dot { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+  .day-5 .tl-dot { background: var(--coral); box-shadow: 0 0 0 2px var(--coral); }
+  .tl-connector {
+    flex: 1;
+    width: 2px;
+    background: #E2EAF2;
+    margin-top: 4px;
+  }
+  .tl-item:last-child .tl-connector { display: none; }
+  .tl-body { padding-bottom: 4px; }
+  .tl-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+  .tl-note {
+    font-size: 12px;
+    color: var(--mid);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 100px;
+    margin-top: 5px;
+    letter-spacing: 0.5px;
+  }
+  .tag-warn { background: #FFF3CD; color: #996600; }
+  .tag-book { background: #FFE5E5; color: #CC3333; }
+  .tag-tip  { background: #E0F7F5; color: #1A8C84; }
+
+  /* ── RAIN BACKUP ── */
+  .rain-box {
+    margin: 4px 20px 16px;
+    background: linear-gradient(135deg, #E8F4FF, #F0FAFF);
+    border-left: 3px solid var(--ocean-light);
+    border-radius: 0 12px 12px 0;
+    padding: 10px 14px;
+  }
+  .rain-title { font-size: 11px; font-weight: 700; color: var(--ocean); letter-spacing: 1px; margin-bottom: 4px; }
+  .rain-text { font-size: 12px; color: var(--mid); line-height: 1.6; }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: var(--dark);
+    margin: 32px 0 10px;
+    padding: 0 0 0 13px;
+    border-left: 4px solid var(--ocean-light);
+    display: flex;
+    align-items: center;
+    line-height: 1.35;
+  }
+  .booking-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .booking-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid #F0F4F8;
+  }
+  .booking-item:last-child { border-bottom: none; }
+  .booking-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--coral);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .booking-dot.warn { background: var(--gold); }
+  .booking-name { font-size: 13px; font-weight: 700; color: var(--dark); }
+  .booking-detail { font-size: 12px; color: var(--mid); margin-top: 3px; line-height: 1.5; }
+
+  /* ── SECTION: NOTES ── */
+  .notes-card {
+    background: var(--dark);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .note-item {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 13px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.6;
+  }
+  .note-item:last-child { border-bottom: none; }
+  .note-icon { flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+
+  /* ── CANDIDATE SPOTS ── */
+  .cand-wrap {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .cand-section {
+    padding: 14px 18px;
+    border-bottom: 1px solid #EEF3F8;
+  }
+  .cand-section:last-child { border-bottom: none; }
+  .cand-cat-label {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cand-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .cand-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #F0F6FA;
+    border: 1px solid #DDE8F0;
+    border-radius: 100px;
+    padding: 4px 10px 4px 8px;
+    font-size: 12px;
+    color: var(--dark);
+    font-weight: 500;
+  }
+  .cand-chip-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    color: var(--ocean-light);
+    line-height: 1;
+  }
+
+  /* ── REGION LABEL inside chip groups ── */
+  .cand-region {
+    flex: 0 0 100%;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 6px 0 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cand-region:first-child { padding-top: 0; }
+  .cand-region::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #DDE8F0;
+  }
+
+  /* ── PREP CARD ── */
+  .prep-card {
+    background: var(--dark);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .prep-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .prep-item:last-child { border-bottom: none; }
+  .prep-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--ocean-light);
+    line-height: 1;
+    min-width: 22px;
+    margin-top: 1px;
+  }
+  .prep-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .prep-text {
+    font-size: 12px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.65;
+  }
+  .prep-link {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 11px;
+    color: var(--mint);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(46,196,182,0.35);
+    word-break: break-all;
+  }
+
+  /* ── TODO CARD ── */
+  .todo-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .todo-person {
+    padding: 12px 18px;
+    border-bottom: 1px solid #EEF3F8;
+  }
+  .todo-person:last-child { border-bottom: none; }
+  .todo-person-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 11px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .todo-person-tag.blue  { background: #E0EEFF; color: #1A5FC8; }
+  .todo-person-tag.teal  { background: #E0F7F5; color: #1A8C84; }
+  .todo-person-tag.coral { background: #FFE5E5; color: #CC3333; }
+  .todo-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.55;
+    padding: 2px 0;
+  }
+  .todo-task::before { content: '▸'; color: var(--ocean-light); flex-shrink: 0; }
+  .todo-task.hi { color: var(--dark); font-weight: 600; }
+
+  /* ── LINKS CARD ── */
+  .links-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .link-item {
+    padding: 12px 18px;
+    border-bottom: 1px solid #EEF3F8;
+  }
+  .link-item:last-child { border-bottom: none; }
+  .link-title { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+  .link-url {
+    display: block;
+    font-size: 11px;
+    color: var(--ocean-light);
+    text-decoration: none;
+    word-break: break-all;
+    margin-top: 2px;
+  }
+  .link-url:hover { text-decoration: underline; }
+  .link-note { font-size: 12px; color: var(--mid); line-height: 1.55; margin-top: 2px; }
+  .combo-opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .combo-opt {
+    font-size: 11px;
+    background: #F0F6FA;
+    border: 1px solid #DDE8F0;
+    border-radius: 100px;
+    padding: 2px 8px;
+    color: var(--mid);
+  }
+
+  /* ── PENDING REVIEW SECTION ── */
+  .pending-section {
+    background: #ECEEF2;
+    border-radius: 16px;
+    padding: 16px 14px 20px;
+  }
+  .pending-cat {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--mid);
+    letter-spacing: 0.5px;
+    margin: 14px 0 8px 2px;
+    padding: 0 0 0 10px;
+    border-left: 3px solid var(--ocean-light);
+  }
+  .pending-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,59,92,0.06);
+  }
+  .pending-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 14px;
+    border-bottom: 1px solid #F0F4F8;
+    transition: background 0.18s;
+  }
+  .pending-item:last-child { border-bottom: none; }
+  .pending-item.voted-yes { background: #EDFAF7; }
+  .pending-item.voted-no  { background: #FFF3F3; }
+  .pending-body { flex: 1; min-width: 0; }
+  .pending-account {
+    font-size: 11px;
+    color: var(--ocean-light);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .pending-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+  .pending-desc {
+    font-size: 12px;
+    color: var(--mid);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+  .pending-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .pending-link {
+    font-size: 11px;
+    color: var(--ocean-light);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .pending-link:hover { text-decoration: underline; }
+  .pending-votes { display: flex; gap: 5px; }
+  .vote-btn {
+    border: none;
+    border-radius: 100px;
+    padding: 4px 11px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1.4;
+  }
+  .vote-yes { background: #E0F7F3; color: #1A8C7A; }
+  .vote-yes:hover, .vote-yes.active { background: #2EC4B6; color: #fff; }
+  .vote-no  { background: #FFE8E8; color: #CC4444; }
+  .vote-no:hover, .vote-no.active  { background: #FF6B6B; color: #fff; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    background: var(--dark);
+  }
+
+  /* ── MOBILE IMPROVEMENTS ── */
+
+  /* Responsive hero title */
+  .hero-title {
+    font-size: clamp(34px, 13vw, 52px);
+  }
+
+  /* Safe area: hero padding for notch phones */
+  .hero {
+    padding-top: calc(48px + env(safe-area-inset-top, 0px));
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+
+  /* Sticky day navigation bar */
+  .day-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,43,60,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    -webkit-overflow-scrolling: touch;
+  }
+  .day-nav::-webkit-scrollbar { display: none; }
+  .day-nav-btn {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: 100px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.10);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .day-nav-btn.active {
+    background: var(--ocean-light);
+    color: var(--white);
+    border-color: transparent;
+  }
+  .day-nav-btn:active {
+    opacity: 0.75;
+  }
+
+  /* Touch-friendly link targets */
+  .link-url {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+  }
+  .prep-link {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 0;
+  }
+
+  /* Ensure day-theme wraps gracefully on small screens */
+  .day-theme {
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  /* Multi-time slot (e.g. 20:30 or 22:30) */
+  .tl-time-multi {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0px;
+  }
+  .tl-time-multi span { line-height: 1.45; }
+  .tl-or {
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--light);
+    line-height: 1.2;
+  }
+
+  /* ── TIMELINE ACTION BUTTONS ── */
+  .tl-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 7px;
+  }
+  .tl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 28px;
+    transition: opacity 0.15s;
+    letter-spacing: 0.3px;
+  }
+  .tl-btn:active { opacity: 0.65; }
+  .tl-btn-map  { background: #E6F2FF; color: #0055BB; border: 1px solid #B3D4F7; }
+  .tl-btn-web  { background: #F0F6FA; color: #4A6278; border: 1px solid #DDE8F0; }
+  .tl-btn-book { background: #FFE5E5; color: #CC3333; border: 1px solid #FFBBBB; }
+
+  /* ── MERGED PREP CARD (white) ── */
+  .merge-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,59,92,0.08);
+  }
+  .merge-sub {
+    padding: 10px 18px 6px;
+    background: #F7FAFD;
+    border-bottom: 1px solid #EEF3F8;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .merge-sub:not(:first-child) { border-top: 2px solid #EEF3F8; }
+  .merge-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 18px;
+    border-bottom: 1px solid #F0F4F8;
+  }
+  .merge-row:last-child { border-bottom: none; }
+  .merge-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .merge-dot.warn { background: var(--gold); }
+  .merge-dot.blue { background: var(--ocean-light); }
+  .merge-dot.mint { background: var(--mint); }
+  .merge-name { font-size: 13px; font-weight: 700; color: var(--dark); }
+  .merge-detail { font-size: 12px; color: var(--mid); margin-top: 2px; line-height: 1.5; }
+  .merge-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--ocean-light);
+    line-height: 1;
+    min-width: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── PACKING LIST ── */
+  .pack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .pack-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--mid);
+    padding: 5px 18px;
+    line-height: 1.45;
+    border-bottom: 1px solid #F5F8FB;
+  }
+  .pack-item:nth-last-child(-n+2) { border-bottom: none; }
+  .pack-item::before {
+    content: '☐';
+    flex-shrink: 0;
+    color: var(--ocean-light);
+    font-size: 13px;
+    margin-top: -1px;
+  }
+  .pack-item.hi { color: var(--dark); font-weight: 600; }
+  @media (max-width: 400px) {
+    .pack-grid { grid-template-columns: 1fr; }
+    .pack-item:last-child { border-bottom: none; }
+  }
+
+  /* ── CHIP AS LINK ── */
+  a.cand-chip {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  a.cand-chip:hover, a.cand-chip:active {
+    background: #D6EAF8;
+    border-color: #A8CCE8;
+  }
+
+  /* Small phone (≤ 360px) adjustments */
+  @media (max-width: 360px) {
+    .hero-title { font-size: 32px; }
+    .content { padding: 16px 12px 40px; }
+    .tl-item { grid-template-columns: 54px 1px 1fr; }
+    .tl-label { font-size: 13px; }
+    .day-theme { font-size: 13px; }
+    .booking-item { padding: 12px 14px; }
+    .rain-box { margin: 4px 14px 14px; }
+    .timeline { padding: 8px 14px 4px; }
+  }
+
+  /* ── COLLAPSE SYSTEM ── */
+  .collapse-body {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.32s cubic-bezier(0.4,0,0.2,1);
+  }
+  .collapse-toggle.is-closed + .collapse-body {
+    grid-template-rows: 0fr;
+  }
+  .collapse-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+  .collapse-toggle {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  /* Day header chevron */
+  .day-header.collapse-toggle::after {
+    content: '▾';
+    font-size: 18px;
+    color: var(--light);
+    margin-left: auto;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .day-header.collapse-toggle.is-closed::after {
+    transform: rotate(-90deg);
+  }
+  /* Section title chevron (display:flex already in base .section-title) */
+  .section-title.collapse-toggle::after {
+    content: '▾';
+    font-size: 14px;
+    color: var(--light);
+    margin-left: auto;
+    padding-left: 8px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .section-title.collapse-toggle.is-closed::after {
+    transform: rotate(-90deg);
+  }
+  /* Candidate region label chevron */
+  .cand-cat-label.collapse-toggle::after {
+    content: '▾';
+    font-size: 13px;
+    color: var(--light);
+    margin-left: auto;
+    padding-left: 4px;
+    transition: transform 0.3s;
+  }
+  .cand-cat-label.collapse-toggle.is-closed::after {
+    transform: rotate(-90deg);
+  }
+  /* Merge-sub chevron */
+  .merge-sub.collapse-toggle::after {
+    content: '▾';
+    font-size: 11px;
+    color: var(--light);
+    margin-left: auto;
+    padding-left: 4px;
+    transition: transform 0.3s;
+  }
+  .merge-sub.collapse-toggle.is-closed::after {
+    transform: rotate(-90deg);
+  }
+  /* Remove bottom border on last collapse-inner's last child */
+  .merge-sub.collapse-toggle:not(:first-child) { margin-top: 0; }
+
+  /* ── SCHEDULE WRAP (big container for all day cards) ── */
+  .schedule-wrap {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 28px rgba(0,59,92,0.12);
+    margin-bottom: 20px;
+  }
+  .schedule-header {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #003B5C 0%, #0078A8 100%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: default;
+  }
+  .schedule-header-icon { font-size: 16px; line-height: 1; }
+  .schedule-header-title {
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 1.5px;
+  }
+  .schedule-header-meta {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    margin-left: auto;
+    letter-spacing: 0.5px;
+  }
+  /* Day cards inside schedule-wrap: no individual shadows/rounded corners */
+  .schedule-wrap .day-card {
+    border-radius: 0;
+    margin-bottom: 0;
+    box-shadow: none;
+    border-bottom: 6px solid #F2F6FA;
+    animation: none;
+  }
+  .schedule-wrap .day-card:last-child {
+    border-bottom: none;
+  }
+
+  /* ── FLIGHT CARD ACTION BUTTONS ── */
+  .fc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 7px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .fc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 100px;
+    text-decoration: none;
+    min-height: 26px;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.90);
+    border: 1px solid rgba(255,255,255,0.22);
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    transition: background 0.15s;
+  }
+  .fc-btn:active { background: rgba(255,255,255,0.28); }
+  /* Button placed inline in the header row */
+  .fc-btn-inline {
+    margin-left: auto;
+    font-size: 9px;
+    padding: 3px 8px;
+    min-height: 22px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-wave"></div>
+  <div class="hero-title">OKINAWA<br>2026 AUTUMN</div>
+  <div class="hero-sub">7天6夜・4人自駕・9/2－9/8</div>
+  <div class="hero-flights">
+
+    <div class="flight-card" style="flex:1">
+      <div class="flight-card-header">✈️ <span class="fc-name">全員（4人同班機）</span></div>
+      <div class="flight-row">
+        <span class="flight-dir">去程</span>
+        <span class="flight-code">TBA</span>
+        <span class="flight-tba">航班資訊待補</span>
+      </div>
+      <div class="flight-row">
+        <span class="flight-dir ret">回程</span>
+        <span class="flight-code">TBA</span>
+        <span class="flight-tba">航班資訊待補</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DAY NAV -->
+<nav class="day-nav" id="dayNav">
+  <a href="#day1" class="day-nav-btn" data-day="day1">D1 抵達</a>
+  <a href="#day2" class="day-nav-btn" data-day="day2">D2 北部</a>
+  <a href="#day3" class="day-nav-btn" data-day="day3">D3 中部</a>
+  <a href="#day4" class="day-nav-btn" data-day="day4">D4 南部</a>
+  <a href="#day5" class="day-nav-btn" data-day="day5">D5 待規劃</a>
+  <a href="#day6" class="day-nav-btn" data-day="day6">D6 那霸</a>
+  <a href="#day7" class="day-nav-btn" data-day="day7">D7 返國</a>
+  <a href="#prep" class="day-nav-btn">準備</a>
+  <a href="#notes" class="day-nav-btn">提醒</a>
+</nav>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- SCHEDULE WRAP -->
+  <div class="schedule-wrap">
+    <div class="schedule-header">
+      <span class="schedule-header-icon">🗓️</span>
+      <span class="schedule-header-title">行程規劃</span>
+      <span class="schedule-header-meta">9/2–9/8 · 7天6夜</span>
+    </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card day-1" id="day1">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">1</span></div>
+      <div class="day-info">
+        <div class="day-date">9/2（三）</div>
+        <div class="day-theme">✈️ 抵達・瀨長島</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">抵達 OKA → 取車</div>
+          <div class="tl-note" style="margin-top:6px">🚗 租車資訊：<span style="color:var(--coral);font-weight:700">待補</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🌅 瀨長島 Umikaji Terrace</div>
+          <div class="tl-note">海景＋拍照，機場旁 5 分鐘</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=瀨長島ウミカジテラス+豊見城市" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://www.umikajiterrace.com/" target="_blank">🔗 網站</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🏨 飯店 Check-in</div>
+          <div class="tl-note" style="font-weight:600;color:var(--dark);margin-top:4px">住宿：<span style="color:var(--coral);font-weight:700">待補</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🍽️ 國際通晚餐</div>
+          <div class="tl-note">推薦：🍜 沖繩麵 ｜ 🍔 A&amp;W 漢堡（沖繩限定）</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">瀨長島改逛國際通＋藥妝店</div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card day-2" id="day2">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">2</span></div>
+      <div class="day-info">
+        <div class="day-date">9/3（四）</div>
+        <div class="day-theme">🌊 北部・萬座毛・美麗海・古宇利島</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">出發北上</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🪨 萬座毛（象鼻岩）</div>
+          <div class="tl-note">100¥ 入場，約 30 分鐘</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=万座毛+恩納村" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://manzamo.jp/" target="_blank">🔗 網站</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🐠 美麗海水族館 ⭐</div>
+          <div class="tl-note">🐬 海豚秀時段：10:30 / 11:30 / 13:00 / 15:00 / 17:00（提前排隊）</div>
+          <div class="tl-note">🦈 鯨鯊餵食：15:00 / 17:00</div>
+          <span class="tag tag-book">🔴 需提前購票</span>
+          <span class="tag tag-tip">💡 Klook 五合一套票可能更划算</span>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=沖縄美ら海水族館+本部町" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://churaumi.okinawa/" target="_blank">🔗 網站</a>
+            <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/2248-okinawa-churaumi-aquarium-ticket/" target="_blank">📅 Klook 單票</a>
+            <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/8900-churaumi-toku-toku-5-pass-okinawa/" target="_blank">📅 Klook 五合一套票</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🍜 暖木拉麵（午餐）</div>
+          <div class="tl-note">本部町・美麗海水族館附近</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=暖木拉麺+本部町" target="_blank">📍 導航</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">💊 Fuku Pharmacy Motobu</div>
+          <div class="tl-note">本部町山川 1421-5・藥妝採購</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=1421-5+Yamagawa+Motobu+Okinawa+905-0205" target="_blank">📍 導航</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🐟 海人料理 海邦丸</div>
+          <div class="tl-note">本部町大浜 880-4・漁師料理・新鮮海鮮</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=海人料理+海邦丸+本部町大浜880-4" target="_blank">📍 導航</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🌉 古宇利島</div>
+          <div class="tl-note">心形岩打卡，約 1 小時</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=古宇利島ハートロック+今帰仁村" target="_blank">📍 心形岩</a>
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=古宇利大橋+今帰仁村" target="_blank">📍 古宇利大橋</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🗼 古宇利海洋塔</div>
+          <div class="tl-note">展望塔＋貝殼博物館，可搭自動駕駛車上山，眺望古宇利大橋全景</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=古宇利オーシャンタワー+今帰仁村" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://www.kouri-oceantower.com/" target="_blank">🔗 網站</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">返回那霸</div>
+          <div class="tl-note">晚餐推薦：🥩 石垣牛燒肉 或 🐷 阿古豬涮涮鍋</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">萬座毛縮短→美麗海水族館＋海洋塔多逛（室內為主，不受影響）</div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card day-3" id="day3">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">3</span></div>
+      <div class="day-info">
+        <div class="day-date">9/4（五）</div>
+        <div class="day-theme">🏎️ 中部・殘波岬・卡丁車・美國村・來客夢</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🏖️ 殘波岬</div>
+          <div class="tl-note">讀谷村・白色燈塔＋30m 斷崖絕壁・拍照約 30 分鐘</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=残波岬+読谷村" target="_blank">📍 導航</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🏎️ 街頭卡丁車</div>
+          <div class="tl-note">約 1 小時・身高限制 145~185cm</div>
+          <div class="tl-note">⏰ 請提前 30 分鐘到場完成登記手續</div>
+          <span class="tag tag-book">🔴 需提前預約 約¥8,000/人</span>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=沖縄ストリートカート+北谷町" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-book" href="https://www.klook.com/zh-TW/activity/2739-street-go-karting-okinawa/" target="_blank">📅 Klook 預約</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🛍️ 美國村</div>
+          <div class="tl-note">🍦 Blue Seal 冰淇淋 ｜ 🍔 A&amp;W 漢堡（沖繩限定）</div>
+          <div class="tl-note">安良波海灘看夕陽（步行 2 分鐘）</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=アメリカンビレッジ+北谷町" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://www.okinawa-americanvillage.com/" target="_blank">🔗 網站</a>
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=安良波公園ビーチ+北谷町" target="_blank">📍 安良波海灘</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🛒 AEON Mall 沖繩來客夢（Rycom）</div>
+          <div class="tl-note">北中城村・寶可夢中心・吉卜力・藥妝採購・退稅 5,000¥ 以上，22:00 打烊</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=イオンモール沖縄ライカム+北中城村" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://okinawa-rycom.aeon.jp/" target="_blank">🔗 網站</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">返回那霸</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">殘波岬＋海灘跳過，延長美國村或 AEON 來客夢逛街時間（室內）</div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card day-4" id="day4">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">4</span></div>
+      <div class="day-info">
+        <div class="day-date">9/5（六）</div>
+        <div class="day-theme">🏛️ 南部・玉泉洞・奧武島・泊港漁市場</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🦇 沖繩世界（玉泉洞）</div>
+          <div class="tl-note">鐘乳石洞約 30 分鐘，園區含傳統工藝體驗</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=おきなわワールド+南城市" target="_blank">📍 導航</a>
+            <a class="tl-btn tl-btn-web" href="https://www.gyokusendo.co.jp/okinawaworld/" target="_blank">🔗 網站</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🐱 奧武島（貓島）</div>
+          <div class="tl-note">吃天婦羅・中本鮮魚天婦羅名店</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=奥武島+南城市" target="_blank">📍 導航</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🐟 泊港漁市場（泊いゆまち）</div>
+          <div class="tl-note">CP 值超高海鮮丼・鮪魚蓋飯・海葡萄，7:00 開門</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=泊いゆまち+那覇市" target="_blank">📍 導航</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🍽️ 晚餐</div>
+          <div class="tl-note">推薦：🥩 石垣牛燒肉 ｜ 🐷 阿古豬涮涮鍋 ｜ 🍜 沖繩麵</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">玉泉洞為室內鐘乳石洞・泊港漁市場為室內市場，皆不受影響 ✅</div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card day-5" id="day5">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">5</span></div>
+      <div class="day-info">
+        <div class="day-date">9/6（日）</div>
+        <div class="day-theme">🗺️ 待規劃（彈性日）</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🗺️ 待規劃景點</div>
+          <div class="tl-note">可安排：海灘放鬆、浮潛、離島、或補逛購物中心</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">待補</div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card day-6" id="day6">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">6</span></div>
+      <div class="day-info">
+        <div class="day-date">9/7（一）</div>
+        <div class="day-theme">⛩️ 那霸市區・波上宮・Workman・購物</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">⛩️ 波上宮</div>
+          <div class="tl-note">那霸唯一海邊神社・琉球八社之首，旁邊有波之上海灘</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=波上宮+那覇市" target="_blank">📍 導航</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">⛩️ 沖宮</div>
+          <div class="tl-note">琉球八社之一・奧武山公園內，可順路參拜</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=沖宮+那覇市" target="_blank">📍 導航</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🔧 Workman（ワークマン）</div>
+          <div class="tl-note">高CP值戶外/機能服飾・價格實惠</div>
+          <div class="tl-actions">
+            <a class="tl-btn tl-btn-map" href="https://maps.google.com/?q=ワークマン+那覇" target="_blank">📍 搜尋附近門市</a>
+            <a class="tl-btn tl-btn-web" href="https://www.workman.co.jp/" target="_blank">🔗 官網</a>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🛍️ 國際通・藥妝採購</div>
+          <div class="tl-note">最後一晚掃貨，退稅 5,000¥ 以上</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🍽️ 最後晚餐</div>
+          <div class="tl-note">推薦：🍜 沖繩麵 ｜ 🥩 石垣牛 ｜ 🐷 阿古豬 ｜ 🍔 A&amp;W</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">☔ 雨天備案</div>
+      <div class="rain-text">全部為室內或有屋簷的行程，不受影響 ✅</div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day-card day-7" id="day7">
+    <div class="day-header collapse-toggle">
+      <div class="day-num"><span class="day-num-text">Day</span><span class="day-num-n">7</span></div>
+      <div class="day-info">
+        <div class="day-date">9/8（二）</div>
+        <div class="day-theme">🛫 退房・返國</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🏨 退房・整理行李</div>
+          <div class="tl-note">確認行李齊全，各自保管隨身行李</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">🚗 還車</div>
+          <div class="tl-note">待補還車地點與時間</div>
+          <span class="tag tag-book">⚠️ 還車務必完成！</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">--:--</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-body">
+          <div class="tl-label">✈️ 返國航班起飛</div>
+          <div class="tl-note">航班資訊待補</div>
+        </div>
+      </div>
+    </div>
+    <div class="rain-box">
+      <div class="rain-title">🗒️ 注意事項</div>
+      <div class="rain-text">待補</div>
+    </div>
+  </div>
+
+  </div><!-- /.schedule-wrap -->
+
+  <!-- PRE-TRIP PREP & BOOKING (merged) -->
+  <div class="section-title collapse-toggle" id="prep">🗓️ 出發準備</div>
+  <div class="merge-card">
+
+    <!-- VJW 提醒 -->
+    <div class="merge-sub collapse-toggle">🌐 Visit Japan Web 入境登記</div>
+    <div class="merge-row">
+      <div class="merge-dot"></div>
+      <div>
+        <div class="tl-actions" style="margin-top:2px">
+          <a class="tl-btn tl-btn-web" href="https://www.vjw.digital.go.jp/main/#/vjwplo001" target="_blank">🔗 官網</a>
+          <a class="tl-btn tl-btn-web" href="https://www.youtube.com/watch?v=89b227fKTsw&t=322s" target="_blank">▶️ 教學影片</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行李清單 -->
+    <div class="merge-sub collapse-toggle">🎒 行李清單</div>
+    <div class="pack-grid">
+      <div class="pack-item hi">護照（效期 &gt; 6 個月）</div>
+      <div class="pack-item hi">台灣駕照正本</div>
+      <div class="pack-item hi">日文駕照譯本</div>
+      <div class="pack-item hi">日幣現鈔</div>
+      <div class="pack-item hi">eSIM / SIM 卡（設定好）</div>
+      <div class="pack-item hi">泳裝（浮潛必備）</div>
+      <div class="pack-item">機票截圖（備用）</div>
+      <div class="pack-item">訂房確認信截圖</div>
+      <div class="pack-item">旅平險 + 不便險單據</div>
+      <div class="pack-item">信用卡（Visa / Master）</div>
+      <div class="pack-item">行動電源</div>
+      <div class="pack-item">充電器（日規 A 型相容）</div>
+      <div class="pack-item">防曬乳 SPF50+</div>
+      <div class="pack-item">帽子 / 太陽眼鏡</div>
+      <div class="pack-item">摺疊傘 / 輕便雨衣</div>
+      <div class="pack-item">運動涼鞋（海灘用）</div>
+      <div class="pack-item">暈車藥</div>
+      <div class="pack-item">常備藥（胃藥、退燒）</div>
+    </div>
+
+  </div>
+
+  <!-- TO DO LIST -->
+  <!-- CANDIDATE SPOTS -->
+  <div class="section-title collapse-toggle">🗺️ 景點總覽</div>
+  <div class="cand-wrap">
+
+    <!-- 北部 -->
+    <div class="cand-section">
+      <div class="cand-cat-label collapse-toggle">🔵 北部</div>
+      <div class="cand-chips">
+        <span class="cand-region">🐠 水族館 / 自然</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=沖縄美ら海水族館+本部町" target="_blank">沖繩美麗海水族館</a>
+        <span class="cand-region">🌿 景點</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=古宇利島ハートロック+今帰仁村" target="_blank">古宇利島</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=ディノパーク+やんばる亜熱帯の森" target="_blank">Dino Park Yanbaru</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=名護パイナップルパーク+名護市" target="_blank">名護鳳梨園</a>
+        <span class="cand-region">🛍️ 購物 / 美食</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=御菓子御殿+名護店" target="_blank">御菓子御殿 名護店</a>
+      </div>
+    </div>
+
+    <!-- 中部 -->
+    <div class="cand-section">
+      <div class="cand-cat-label collapse-toggle">🟡 中部</div>
+      <div class="cand-chips">
+        <span class="cand-region">🌿 景點 / 自然</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=万座毛+恩納村" target="_blank">萬座毛</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=残波岬+読谷村" target="_blank">殘波岬</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=安良波公園ビーチ+北谷町" target="_blank">安良波海灘</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=東南植物楽園+沖縄市" target="_blank">東南植物樂園</a>
+        <span class="cand-region">🏘️ 文化 / 體驗</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=琉球村+恩納村" target="_blank">琉球村</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=港川外人住宅街+浦添市" target="_blank">港川外人住宅</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=アメリカンビレッジ+北谷町" target="_blank">美國村</a>
+        <span class="cand-region">🛍️ 購物</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=PARCO+CITY浦添" target="_blank">PARCO CITY 浦添</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=イオンモール沖縄ライカム+北中城村" target="_blank">AEON MALL Rycom</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=サンエー宜野湾コンベンションシティ" target="_blank">San-A Ginowan</a>
+        <span class="cand-region">🐟 市場 / 海鮮</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=JAおきなわ農産物直売所+ちゃんぷるー市場" target="_blank">JA Chanpuru Ichiba</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=JAおきなわ読谷ゆんた市場" target="_blank">JA Yunta Ichiba</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=ぱやお市場+沖縄市" target="_blank">Payao Market</a>
+      </div>
+    </div>
+
+    <!-- 南部 -->
+    <div class="cand-section">
+      <div class="cand-cat-label collapse-toggle">🔴 南部</div>
+      <div class="cand-chips">
+        <span class="cand-region">🌿 景點 / 自然</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=瀬長島ウミカジテラス+豊見城市" target="_blank">瀨長島</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=瀬長島+豊見城市" target="_blank">瀨長島「戀之島」</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=奥武島+南城市" target="_blank">奧武島（貓島）</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=波上宮+那覇市" target="_blank">波上宮</a>
+        <span class="cand-region">🏛️ 文化 / 體驗</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=おきなわワールド+南城市" target="_blank">沖繩世界</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=ガンガラーの谷+南城市" target="_blank">Gangala 之谷</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=玉泉洞+南城市" target="_blank">玉泉洞</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=那覇国際通り" target="_blank">國際通商店街</a>
+        <span class="cand-region">🐠 水族館 / 博物館</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=DMMかりゆし水族館+豊見城市" target="_blank">DMM Kariyushi 水族館</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=南城市地域物産館" target="_blank">南城美術館</a>
+        <span class="cand-region">🛍️ 購物 / Outlet</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=アウトレットモールあしびなー+豊見城市" target="_blank">ASHIBINAA Outlet</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=DFSギャラリア沖縄+那覇市" target="_blank">迪斐世 那霸店</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=サンエーなはメインプレイス+那覇市" target="_blank">San-A Naha Main Place</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=トミトン+豊見城市" target="_blank">豐崎 TOMITON</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=イーアス沖縄豊崎" target="_blank">iias 沖繩豐崎</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=イオンスタイル来客夢+豊見城市" target="_blank">永旺 STYLE 來客夢</a>
+        <span class="cand-region">🐟 市場 / 海鮮</span>
+        <a class="cand-chip" href="https://maps.google.com/?q=泊いゆまち+那覇市" target="_blank">泊港漁市場</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=第一牧志公設市場+那覇市" target="_blank">牧志公設市場</a>
+        <a class="cand-chip" href="https://maps.google.com/?q=糸満漁業協同組合直売センター" target="_blank">糸滿魚市場</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NOTES -->
+  <div class="section-title collapse-toggle" id="notes">📌 重要提醒</div>
+  <div class="notes-card">
+    <div class="note-item"><span class="note-icon">🌀</span><span>9月仍屬颱風季尾聲，出發前注意氣象預報，保留行程彈性</span></div>
+    <div class="note-item"><span class="note-icon">🌊</span><span>9月海水溫度仍適合浮潛，是旺季後的好時機，人潮較少</span></div>
+    <div class="note-item"><span class="note-icon">🧴</span><span>防曬用品仍為必備，日夜溫差開始加大，薄外套備用</span></div>
+  </div>
+
+</div>
+
+<div class="footer">沖繩 2026秋・7天6夜・4人自駕・9/2–9/8</div>
+
+<script>
+  // ── PENDING REVIEW VOTES ──
+  function pendingVote(id, vote, btn) {
+    var item = btn.closest('.pending-item');
+    var otherVote = vote === 'yes' ? 'no' : 'yes';
+    if (btn.classList.contains('active')) {
+      btn.classList.remove('active');
+      item.classList.remove('voted-' + vote);
+      localStorage.removeItem('pending_' + id);
+    } else {
+      btn.classList.add('active');
+      item.classList.add('voted-' + vote);
+      item.classList.remove('voted-' + otherVote);
+      var otherBtn = item.querySelector('.vote-' + otherVote);
+      if (otherBtn) otherBtn.classList.remove('active');
+      localStorage.setItem('pending_' + id, vote);
+    }
+  }
+  (function() {
+    document.querySelectorAll('.pending-item').forEach(function(item) {
+      var id = item.dataset.id;
+      var saved = localStorage.getItem('pending_' + id);
+      if (saved) {
+        var btn = item.querySelector('.vote-' + saved);
+        if (btn) {
+          btn.classList.add('active');
+          item.classList.add('voted-' + saved);
+        }
+      }
+    });
+  })();
+
+  // ── COLLAPSE SYSTEM ──
+  (function() {
+    function wrapInCollapse(elements) {
+      if (!elements.length) return null;
+      var body = document.createElement('div');
+      body.className = 'collapse-body';
+      var inner = document.createElement('div');
+      inner.className = 'collapse-inner';
+      body.appendChild(inner);
+      elements[0].parentNode.insertBefore(body, elements[0]);
+      elements.forEach(function(el) { inner.appendChild(el); });
+      return body;
+    }
+
+    // Day card headers → wrap .timeline + .rain-box siblings
+    document.querySelectorAll('.day-header.collapse-toggle').forEach(function(header) {
+      var siblings = Array.from(header.parentNode.children).filter(function(el) {
+        return el !== header;
+      });
+      wrapInCollapse(siblings);
+    });
+
+    // Section titles → wrap their next sibling card
+    document.querySelectorAll('.section-title.collapse-toggle').forEach(function(title) {
+      var next = title.nextElementSibling;
+      if (next) wrapInCollapse([next]);
+    });
+
+    // cand-cat-label → wrap .cand-chips
+    document.querySelectorAll('.cand-cat-label.collapse-toggle').forEach(function(label) {
+      var next = label.nextElementSibling;
+      if (next && next.classList.contains('cand-chips')) wrapInCollapse([next]);
+    });
+
+    // merge-sub → wrap following rows until next merge-sub
+    document.querySelectorAll('.merge-sub.collapse-toggle').forEach(function(sub) {
+      var toWrap = [];
+      var sib = sub.nextElementSibling;
+      while (sib && !sib.classList.contains('merge-sub')) {
+        toWrap.push(sib);
+        sib = sib.nextElementSibling;
+      }
+      wrapInCollapse(toWrap);
+    });
+
+    // Attach click handlers to all toggles
+    document.querySelectorAll('.collapse-toggle').forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        // Don't fire if click was on a button/link inside the header
+        if (e.target !== toggle && (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a, button'))) return;
+        toggle.classList.toggle('is-closed');
+      });
+    });
+
+    // Default: all sections start collapsed
+    document.querySelectorAll('.collapse-toggle').forEach(function(toggle) {
+      toggle.classList.add('is-closed');
+    });
+  })();
+
+  // ── STICKY NAV: scroll tracking + smooth scroll + auto-expand ──
+  (function() {
+    var targets = ['day1','day2','day3','day4','day5','day6','day7','prep','notes'];
+    var navBtns = Array.from(document.querySelectorAll('.day-nav-btn'));
+
+    function getActive() {
+      var scrollY = window.scrollY + 80;
+      var active = null;
+      for (var i = 0; i < targets.length; i++) {
+        var el = document.getElementById(targets[i]);
+        if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
+          active = targets[i];
+        }
+      }
+      return active;
+    }
+
+    function updateNav() {
+      var active = getActive();
+      navBtns.forEach(function(btn) {
+        var href = btn.getAttribute('href');
+        var isActive = href && active && href === '#' + active;
+        btn.classList.toggle('active', !!isActive);
+      });
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // Smooth scroll + auto-expand collapsed section
+    navBtns.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        var href = btn.getAttribute('href');
+        if (!href || href === '#') return;
+        var target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          // Auto-expand if the target or its direct toggle child is collapsed
+          var toggleEl = target.classList.contains('collapse-toggle')
+            ? target
+            : target.querySelector('.collapse-toggle');
+          if (toggleEl && toggleEl.classList.contains('is-closed')) {
+            toggleEl.classList.remove('is-closed');
+          }
+          var offset = 56;
+          var top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
